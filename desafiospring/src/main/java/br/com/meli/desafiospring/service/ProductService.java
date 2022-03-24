@@ -1,19 +1,34 @@
 package br.com.meli.desafiospring.service;
 
-
+import br.com.meli.desafiospring.dto.InputDTO;
+import br.com.meli.desafiospring.dto.ProductDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ProdutoSimplificado;
 import br.com.meli.desafiospring.enums.ProductOrderByEnum;
 import org.springframework.stereotype.Service;
+import br.com.meli.desafiospring.repository.ProductRepository;
 
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+
+
+
+
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
+@AllArgsConstructor
 public class ProductService {
 
+
+    private ProductRepository productRepository;
 
 
     public static List<Product> produtos = Collections.synchronizedList(new ArrayList<Product>());
@@ -28,6 +43,12 @@ public class ProductService {
         ));
     }
 
+
+    public List<ProductDTO> createProducts(InputDTO input) {
+        List<Product> newProducts = input.getArticles();
+        productRepository.writeFile(newProducts);
+        return newProducts.stream().map(a -> new ProductDTO().convert(a)).collect(Collectors.toList());
+    }
     public List<Product> findByCritirion(String category, Boolean freeShipping, Integer orderBy ){
 
         List<Product> list;
@@ -59,8 +80,9 @@ public class ProductService {
     };
 
 
-
-
-
-
 }
+
+
+
+
+

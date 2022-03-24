@@ -8,10 +8,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 @RestController
 @AllArgsConstructor
@@ -67,8 +69,15 @@ public class ProductController {
 
 
 
+    @PostMapping("/api/v1/insert-articles-request")
+    public ResponseEntity<List<ProductDTO>> postProducts(@RequestBody InputDTO input) {
+        try {
+            return ResponseEntity.ok(productService.createProducts(input));
+
+        } catch ( Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 
-
-
-}
