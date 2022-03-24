@@ -1,8 +1,11 @@
 package br.com.meli.desafiospring.controller;
 
 
+import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ProdutoSimplificado;
 import br.com.meli.desafiospring.service.ProductService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,20 +14,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
+@AllArgsConstructor
 public class ProductController {
 
+    private final ProductService productService;
 
-    	private static List<ProdutoSimplificado> produtos = Collections.synchronizedList(new ArrayList<ProdutoSimplificado>());
 
-    static {
-		produtos.addAll(Arrays.asList(
-				new ProdutoSimplificado("Xadrez", BigDecimal.valueOf(400)),
-                new ProdutoSimplificado("Carro", BigDecimal.valueOf(200)),
-                new ProdutoSimplificado("Pedra", BigDecimal.valueOf(500)),
-                new ProdutoSimplificado("Lapis", BigDecimal.valueOf(700)),
-                new ProdutoSimplificado("Tesoura", BigDecimal.valueOf(100))
-			));
-	}
 
 //    static {
 //        produtos.addAll(Arrays.asList(
@@ -38,85 +33,39 @@ public class ProductController {
 
 
 	@GetMapping("/produtos")
-    public List<ProdutoSimplificado> retorna(){
+    public List<Product> retorna(){
 
-        return produtos;
+        return ProductService.produtos;
     }
 
 	@PostMapping("/produtos")
-    public String salvar(@RequestBody ProdutoSimplificado produtoSimplificado){
+    public String salvar(@RequestBody Product product){
 
 
-        produtos.add(produtoSimplificado);
+        productService.produtos.add(product);
 
 
-        return "Produto salvo " + produtoSimplificado.getName() + " com preço de " + produtoSimplificado.getPrice();
+        return "Produto salvo " + product.getName() + " com preço de " + product.getPrice();
     }
 
 
 
-    // Desafio
+    /**
+     *  R005, R006, R007
+     */
     @GetMapping("/api/v1/articles")
-    public List<ProdutoSimplificado> retornaPorPreco(@RequestParam String category,
-                                                       @RequestParam String freeShipping,
-                                                       @RequestParam Integer order){
+    public List<Product> retornaPorPreco(@RequestParam String category,
+                                         @RequestParam Boolean freeShipping,
+                                         @RequestParam Integer order){
 
-        List<ProdutoSimplificado> list;
-        list = produtos;
-        // Adicionar tratamento para null
 
         ProductService.p.apply(order);
 
-        return list.stream().sorted(ProductService.p.apply(order)).collect(Collectors.toList());
-
-
-//        if(order == 2){
-//            list = produtos
-//                    .stream()
-//                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
-//                    .collect(Collectors.toList());
-//
-//            return   list;
-//
-//        }
-//        else if(order == 3){
-//            list = produtos
-//                    .stream()
-//                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
-//                    .collect(Collectors.toList());
-//            Collections.reverse(list);
-//
-//            return   list;
-//
-//        }
-//        else
-//            return produtos;
-
-
+        return productService.findByCritirion(category, freeShipping, order);
 
     }
 
 
-
-
-
-//    @GetMapping("/api/v1/articles")
-//    public List<ProdutoSimplificado> retornaMaiorPreco(@RequestParam String category,
-//                                                     @RequestParam String freeShipping,
-//                                                     @RequestParam String order){
-//
-//        List<ProdutoSimplificado> list;
-//
-//        list = produtos
-//                .stream()
-//                .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
-//                .collect(Collectors.toList());
-//
-//        Collections.reverse(list);
-//        return   list;
-//
-//
-//    }
 
 
 
