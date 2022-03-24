@@ -23,7 +23,7 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
     private final ObjectMapper objectMapper;
 
     @Override
-    public void writeToFile(Object value, String jsonFilePath) throws IOException {
+    public void writeToFile(T value, String jsonFilePath) throws IOException {
         File jsonFile = Paths.get(jsonFilePath).toFile();
 
         if (jsonFile.isDirectory()) {
@@ -48,9 +48,9 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
     }
 
     @Override
-    public List<T> readObjects(String filePath, Class<T> clazz) {
+    public List<T> readObjects(String filePath, Class<T> type) {
         try {
-            return objectMapper.readValue(Paths.get(filePath).toFile(), TypeFactory.defaultInstance().constructCollectionType(List.class, clazz));
+            return objectMapper.readValue(Paths.get(filePath).toFile(), TypeFactory.defaultInstance().constructCollectionType(List.class, type));
         } catch (IOException  e) {
             e.printStackTrace();
         }
