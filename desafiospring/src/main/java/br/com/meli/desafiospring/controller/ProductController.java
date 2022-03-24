@@ -24,23 +24,6 @@ public class ProductController {
     private final ProductService productService;
 
 
-//    @GetMapping("/produtos")
-//    public List<Product> retorna() {
-//
-//        return ProductService.produtos;
-//    }
-
-//    @PostMapping("/produtos")
-//    public String salvar(@RequestBody Product product) {
-//
-//
-//        productService.produtos.add(product);
-//
-//
-//        return "Produto salvo " + product.getName() + " com preço de " + product.getPrice();
-//    }
-
-
     /**
      * R005, R006, R007
      */

@@ -31,19 +31,6 @@ public class ProductService {
     private ProductRepository productRepository;
 
 
-//    public static List<Product> produtos = Collections.synchronizedList(new ArrayList<Product>());
-//
-//    static {
-//        produtos.addAll(Arrays.asList(
-//                new Product(1L,"Serra de Bancada","Ferramentas","FORTGPRO", BigDecimal.valueOf(1800.0), 5,true,"****"),
-//                new Product(2L,"Furadeira","Ferramentas","Black & Decker", BigDecimal.valueOf(500.0), 7,true,"****"),
-//                new Product(3L,"Carro","Veiculo","Aston Martin", BigDecimal.valueOf(2000.0), 1,true,"******"),
-//                new Product(4L,"Bola","Lazer","Nike", BigDecimal.valueOf(50.0), 5,true,"***"),
-//                new Product(5L,"Lapis","Papelaria","Bic", BigDecimal.valueOf(5.0), 7,true,"*")
-//        ));
-//    }
-
-
     public List<ProductDTO> createProducts(InputDTO input) {
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
