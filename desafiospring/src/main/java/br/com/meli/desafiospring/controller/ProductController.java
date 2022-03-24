@@ -1,6 +1,8 @@
 package br.com.meli.desafiospring.controller;
 
 
+import br.com.meli.desafiospring.dto.InputDTO;
+import br.com.meli.desafiospring.dto.ProductDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ProdutoSimplificado;
 import br.com.meli.desafiospring.service.ProductService;
@@ -22,43 +24,30 @@ public class ProductController {
     private final ProductService productService;
 
 
+//    @GetMapping("/produtos")
+//    public List<Product> retorna() {
+//
+//        return ProductService.produtos;
+//    }
 
-//    static {
-//        produtos.addAll(Arrays.asList(
-//                new ProdutoSimplificado("Bola", 400.0),
-//                new ProdutoSimplificado("Carro", 200.0),
-//                new ProdutoSimplificado("Pedra", 500.0),
-//                new ProdutoSimplificado("Papel", 700.0),
-//                new ProdutoSimplificado("Tesoura", 100.0)
-//        ));
+//    @PostMapping("/produtos")
+//    public String salvar(@RequestBody Product product) {
+//
+//
+//        productService.produtos.add(product);
+//
+//
+//        return "Produto salvo " + product.getName() + " com preço de " + product.getPrice();
 //    }
 
 
-	@GetMapping("/produtos")
-    public List<Product> retorna(){
-
-        return ProductService.produtos;
-    }
-
-	@PostMapping("/produtos")
-    public String salvar(@RequestBody Product product){
-
-
-        productService.produtos.add(product);
-
-
-        return "Produto salvo " + product.getName() + " com preço de " + product.getPrice();
-    }
-
-
-
     /**
-     *  R005, R006, R007
+     * R005, R006, R007
      */
     @GetMapping("/api/v1/articles")
     public List<Product> retornaPorPreco(@RequestParam String category,
                                          @RequestParam Boolean freeShipping,
-                                         @RequestParam Integer order){
+                                         @RequestParam Integer order) {
 
 
         ProductService.p.apply(order);
@@ -68,16 +57,17 @@ public class ProductController {
     }
 
 
-
     @PostMapping("/api/v1/insert-articles-request")
     public ResponseEntity<List<ProductDTO>> postProducts(@RequestBody InputDTO input) {
         try {
             return ResponseEntity.ok(productService.createProducts(input));
 
-        } catch ( Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }
+
+}
 
 

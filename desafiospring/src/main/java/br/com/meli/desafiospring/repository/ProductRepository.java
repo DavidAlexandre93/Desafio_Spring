@@ -14,15 +14,21 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductRepository {
     private final FilePersistenceJson<Product> filePersistence;
+    private static final String filePath = "src/main/java/br/com/meli/desafiospring/files/products.json";
 
     public void writeFile(List<Product> input) {
         input.stream().forEach(p -> {
             try {
-                filePersistence.writeToFile(p, "src/main/java/br/com/meli/desafiospring/files/products.json");
+                filePersistence.writeToFile(p, filePath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+    }
+
+
+    public List<Product> findAll(){
+        return filePersistence.readObjects(filePath,Product.class);
     }
 
 
