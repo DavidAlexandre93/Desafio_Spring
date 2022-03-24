@@ -7,14 +7,15 @@ import br.com.meli.desafiospring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private ProductRepository productRepository = new ProductRepository();
 
-    public void createProducts(InputDTO input) {
-        List<Product> existingData = productRepository.readFile();
+    public List<ProductDTO> createProducts(InputDTO input) {
         List<Product> newProducts = input.getArticles();
-        newProducts.stream().forEach(a -> existingData.add(a));
+        productRepository.writeFile(newProducts);
+        return newProducts.stream().map(a -> new ProductDTO().convert(a)).collect(Collectors.toList());
     }
 }
