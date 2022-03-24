@@ -4,6 +4,7 @@ import br.com.meli.desafiospring.dto.InputDTO;
 import br.com.meli.desafiospring.dto.ProductDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.service.ProductService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,15 @@ public class ProductController {
      * R005, R006, R007
      */
     @GetMapping("/api/v1/articles")
-    public List<Product> retornaPorPreco(@RequestParam String category,
-                                         @RequestParam Boolean freeShipping,
-                                         @RequestParam Integer order) {
-        ProductService.p.apply(order);
-        return productService.findByCritirion(category, freeShipping, order);
+    public List<Product> retornaPorPreco(@RequestParam(required=false) String category,
+                                         @RequestParam(required=false) Boolean freeShipping,
+                                         @RequestParam(required=false) Integer order) {
+        if (category == null && freeShipping == null && order == null) {
+            return productService.findAll();
+        } else {
+            ProductService.p.apply(order);
+            return productService.findByCritirion(category, freeShipping, order);
+        }
     }
     
     @PostMapping("/api/v1/insert-articles-request")
@@ -36,6 +41,7 @@ public class ProductController {
             return ResponseEntity.badRequest().build();
         }
     }
+
 
 }
 
