@@ -2,7 +2,9 @@ package br.com.meli.desafiospring.controller;
 
 
 import br.com.meli.desafiospring.entity.ProdutoSimplificado;
+import br.com.meli.desafiospring.service.ProductService;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -16,10 +18,10 @@ public class ProductController {
 
     static {
 		produtos.addAll(Arrays.asList(
-				new ProdutoSimplificado("Bola", BigDecimal.valueOf(400)),
+				new ProdutoSimplificado("Xadrez", BigDecimal.valueOf(400)),
                 new ProdutoSimplificado("Carro", BigDecimal.valueOf(200)),
                 new ProdutoSimplificado("Pedra", BigDecimal.valueOf(500)),
-                new ProdutoSimplificado("Papel", BigDecimal.valueOf(700)),
+                new ProdutoSimplificado("Lapis", BigDecimal.valueOf(700)),
                 new ProdutoSimplificado("Tesoura", BigDecimal.valueOf(100))
 			));
 	}
@@ -57,31 +59,38 @@ public class ProductController {
     @GetMapping("/api/v1/articles")
     public List<ProdutoSimplificado> retornaPorPreco(@RequestParam String category,
                                                        @RequestParam String freeShipping,
-                                                       @RequestParam Double order){
+                                                       @RequestParam Integer order){
 
         List<ProdutoSimplificado> list;
+        list = produtos;
         // Adicionar tratamento para null
-        if(order == 2){
-            list = produtos
-                    .stream()
-                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
-                    .collect(Collectors.toList());
 
-            return   list;
+        ProductService.p.apply(order);
 
-        }
-        else if(order == 3){
-            list = produtos
-                    .stream()
-                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
-                    .collect(Collectors.toList());
-            Collections.reverse(list);
+        return list.stream().sorted(ProductService.p.apply(order)).collect(Collectors.toList());
 
-            return   list;
 
-        }
-        else
-            return produtos;
+//        if(order == 2){
+//            list = produtos
+//                    .stream()
+//                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
+//                    .collect(Collectors.toList());
+//
+//            return   list;
+//
+//        }
+//        else if(order == 3){
+//            list = produtos
+//                    .stream()
+//                    .sorted(Comparator.comparingDouble(v -> v.getPrice().doubleValue()))
+//                    .collect(Collectors.toList());
+//            Collections.reverse(list);
+//
+//            return   list;
+//
+//        }
+//        else
+//            return produtos;
 
 
 
