@@ -8,6 +8,7 @@ import br.com.meli.desafiospring.entity.ShoppingCart;
 import br.com.meli.desafiospring.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import java.util.*;
@@ -17,6 +18,7 @@ import java.util.*;
 @RequestMapping("/api/v1")
 public class ProductController {
 
+    @Autowired
     private final ProductService productService;
     private final ModelMapper modelMapper;
 
@@ -47,6 +49,13 @@ public class ProductController {
         List<Product> soldProducts = productService.sellProducts(shoppingCart);
         return ResponseEntity.ok(soldProducts);
     }
+    @GetMapping("/api/v1/articles/category")
+    public ResponseEntity <List<Product>> getProductsByCategory(@RequestParam String category){
+        List<Product> categories = productService.getProductsByCategory(category);
+
+        return ResponseEntity.ok(categories);
+    }
+
 }
 
 
