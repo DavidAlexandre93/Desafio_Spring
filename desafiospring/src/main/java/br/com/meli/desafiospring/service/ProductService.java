@@ -4,6 +4,8 @@ import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +33,7 @@ public class ProductService {
     @Autowired
     private ProductRepository<Product> repository;
 
-    public synchronized List<Product> lista(String category, Double freeshipping, String name, String brand){
+    /*public synchronized List<Product> lista(String category, Double freeshipping, String name, String brand){
 
         if(category!=null && !category.isEmpty()) {
             return repository.lista(category).stream()
@@ -45,15 +47,27 @@ public class ProductService {
         }
 
         return repository.lista(category);
+    }*/
+
+    public List<Product> listaPorCategoriaFreeshipping(String category, String freeShipping){
+
+        List<Product> productList = new ArrayList<>();
+        for (Product p: repository.lista()){
+            if (p.getCategory().equals(category) && (p.getFreeShipping().equals(freeShipping))){
+                productList.add(p);
+            }
+
+        }
+        return productList;
     }
 
 
 
 
-    public synchronized Product obter(String category) {
+    /*public synchronized Product obter(String category) {
         Optional<Product> optional = repository.lista(category).stream().filter(a->a.getCategory().equals(category)).findFirst();
         return optional.orElse(new Product());
-    }
+    }*/
 
 
 }

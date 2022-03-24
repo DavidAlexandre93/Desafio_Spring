@@ -15,7 +15,7 @@ public class ProductRepository<T>{
     private static final String PRODUTOS_TXT = "produtos.txt";
 
 
-    public List<Product> lista(String category) {
+    public List<Product> lista() {
         Util = new Util<Product>();
         List<String> registros = Util.leitura(PRODUTOS_TXT);
         List<Product> result = new ArrayList<Product>();
