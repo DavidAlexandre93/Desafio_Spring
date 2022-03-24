@@ -1,12 +1,10 @@
 package br.com.meli.desafiospring.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-
 
 @Data
 @NoArgsConstructor
@@ -21,6 +19,5 @@ public class Product {
    private Integer quantity;
    private Boolean freeShipping;
    private String prestige;
-
 
 }

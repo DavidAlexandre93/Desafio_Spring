@@ -27,9 +27,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ProductService {
 
-
-    private ProductRepository productRepository;
-
+    private final ProductRepository productRepository;
 
     public List<ProductDTO> createProducts(InputDTO input) {
         List<Product> newProducts = input.getArticles();
@@ -37,7 +35,6 @@ public class ProductService {
         return newProducts.stream().map(a -> new ProductDTO().convert(a)).collect(Collectors.toList());
     }
     public List<Product> findByCritirion(String category, Boolean freeShipping, Integer orderBy ){
-
         return productRepository.findAll().stream().sorted(ProductService.p.apply(orderBy)).collect(Collectors.toList());
     }
 
