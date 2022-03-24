@@ -3,27 +3,69 @@ package br.com.meli.desafiospring.service;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import br.com.meli.desafiospring.dto.InputDTO;
+import br.com.meli.desafiospring.dto.ProductDTO;
+import br.com.meli.desafiospring.enums.ProductOrderByEnum;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
+import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public List<ProductDTO> createProducts(InputDTO input) {
+        List<Product> newProducts = input.getArticles();
+        productRepository.writeFile(newProducts);
+        return newProducts.stream().map(a -> new ProductDTO().convert(a)).collect(Collectors.toList());
+    }
+
+    public List<Product> findByCritirion(String category, Boolean freeShipping, Integer orderBy ){
+        return productRepository.findAll().stream().sorted(ProductService.p.apply(orderBy)).collect(Collectors.toList());
+    }
+
+    /**
+     *  R005, R006, R007
+     */
+    public static Function<Integer, Comparator<Product>> p = orderBy -> (Comparator<Product>) (o1, o2) -> {
+        int result = 0;
+
+        if (ProductOrderByEnum.PRICE_ASC.getValue().equals(orderBy)) {
+            result = o2.getPrice().compareTo(o1.getPrice());
+        }
+        else if(ProductOrderByEnum.PRICE_DESC.getValue().equals(orderBy)){
+            result = o1.getPrice().compareTo(o2.getPrice());
+        }
+        else if(ProductOrderByEnum.NAME_ASC.getValue().equals(orderBy)){
+            result = o1.getName().compareTo(o2.getName());
+        }
+        else if(ProductOrderByEnum.NAME_DESC.getValue().equals(orderBy)){
+            result = o2.getName().compareTo(o1.getName());
+        }
+
+        return result;
+    };
 
     public List<Product> getProductsByCategory(String category){
 
-        List<Product> products = productRepository.products();
+        List<Product> products = productRepository.findAll();
 
         if(category!=null && !category.isEmpty() ) {
-           return products.stream()
+            return products.stream()
                     .filter(product -> product.getCategory().equalsIgnoreCase(category))
                     .collect(Collectors.toList());
         }
         return products;
     }
-
 }
+
+
+
+
+
