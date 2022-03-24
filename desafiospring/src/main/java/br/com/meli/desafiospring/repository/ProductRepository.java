@@ -12,6 +12,7 @@ import java.util.List;
 public class ProductRepository {
 
     private final FilePersistenceJson<Product> filePersistence;
+
     private static final String filePath = "src/main/java/br/com/meli/desafiospring/files/products.json";
 
     public void writeFile(List<Product> input) {

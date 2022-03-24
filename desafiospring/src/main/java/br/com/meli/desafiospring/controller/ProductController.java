@@ -24,12 +24,8 @@ public class ProductController {
     public List<Product> retornaPorPreco(@RequestParam String category,
                                          @RequestParam Boolean freeShipping,
                                          @RequestParam Integer order) {
-
-
         ProductService.p.apply(order);
-
         return productService.findByCritirion(category, freeShipping, order);
-
     }
 
     @PostMapping("/api/v1/insert-articles-request")
