@@ -1,19 +1,17 @@
 package br.com.meli.desafiospring.controller;
 
 import br.com.meli.desafiospring.dto.ArticlesDTO;
-
 import br.com.meli.desafiospring.dto.PurchaseRequestDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ShoppingCart;
 import br.com.meli.desafiospring.service.ProductService;
-
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -29,9 +27,9 @@ public class ProductController {
      */
 
     @GetMapping("/articles")
-    public List<Product> retornaPorPreco(@RequestParam(required=false) String category,
-                                         @RequestParam(required=false) Boolean freeShipping,
-                                         @RequestParam(required=false) Integer order) {
+    public List<Product> retornaPorPreco(@RequestParam(required = false) String category,
+                                         @RequestParam(required = false) Boolean freeShipping,
+                                         @RequestParam(required = false) Integer order) {
         if (category == null && freeShipping == null && order == null) {
             return productService.findAll();
         } else {
@@ -53,12 +51,12 @@ public class ProductController {
     @PostMapping("/purchase-request")
     public ResponseEntity<?> purchaseProducts(@RequestBody PurchaseRequestDTO purchaseRequestDTO) {
         ShoppingCart shoppingCart = modelMapper.map(purchaseRequestDTO, ShoppingCart.class);
-        List<Product> soldProducts = productService.sellProducts(shoppingCart);
-        return ResponseEntity.ok(soldProducts);
+        ShoppingCart result = productService.sellProducts(shoppingCart);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/articles/category")
-    public ResponseEntity <List<Product>> getProductsByCategory(@RequestParam String category){
+    public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam String category) {
         List<Product> categories = productService.getProductsByCategory(category);
 
         return ResponseEntity.ok(categories);

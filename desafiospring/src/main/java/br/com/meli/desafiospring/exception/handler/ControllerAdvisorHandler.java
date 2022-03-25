@@ -77,4 +77,16 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+    @ExceptionHandler(value = {RuntimeException.class})
+    protected ResponseEntity<Object> handleProductDoesNotExistsException(RuntimeException exception) {
+        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+                .timestamp(LocalDateTime.now())
+                .title("Internal server error")
+                .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .description(exception.getMessage())
+                .build();
+
+        return new ResponseEntity<>(exceptionPayload, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
