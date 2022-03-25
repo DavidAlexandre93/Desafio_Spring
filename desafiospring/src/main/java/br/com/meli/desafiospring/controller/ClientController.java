@@ -19,13 +19,14 @@ import java.util.List;
 @RequestMapping("/api/v2")
 public class ClientController {
 
-    @Autowired
+
     private final ModelMapper modelMapper;
-    @Autowired
-    private final ClientService clientService;
+
+    ClientService clientService;
 
     @PostMapping("/insert-client")
     public ResponseEntity<?> postClient(@Valid @RequestBody ClientInputValidationDTO input) {
+        System.out.println(input);
         try {
             Client client = modelMapper.map(input, Client.class);
             clientService.createClient(client);
@@ -33,11 +34,7 @@ public class ClientController {
 
         } catch (ClientRegisteredException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
         }
-
     }
     @GetMapping("/api/v1/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state) {

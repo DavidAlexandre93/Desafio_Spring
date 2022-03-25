@@ -5,7 +5,6 @@ import br.com.meli.desafiospring.entity.Client;
 import br.com.meli.desafiospring.exception.ClientRegisteredException;
 import br.com.meli.desafiospring.repository.ClientRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +15,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ClientService {
 
-    @Autowired
-    private final ClientRepository clientRepository;
+
+    ClientRepository clientRepository;
 
     public void createClient(Client input) {
         List<Client> existingClients = clientRepository.findAll();

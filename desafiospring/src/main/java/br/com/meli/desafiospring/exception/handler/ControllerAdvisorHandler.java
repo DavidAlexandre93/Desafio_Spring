@@ -52,26 +52,27 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.CONFLICT);
     }
-
-
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
-                .timestamp(LocalDateTime.now())
-                .title("Fieldset validation error")
-                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
-                .description(ex.getMessage())
-
-        @ExceptionHandler(value = {OutOfStockException.class})
-        protected ResponseEntity<Object> handleProductDoesNotExistsException(OutOfStockException exception) {
-            ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
-                    .timestamp(LocalDateTime.now())
-                    .title("Product out of stock")
-                    .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
-                    .description(exception.getMessage())
-                    .build();
-
-            return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
-        }
 }
+
+
+//    @Override
+//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+//        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+//                .timestamp(LocalDateTime.now())
+//                .title("Fieldset validation error")
+//                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
+//                .description(ex.getMessage());
+//
+//        @ExceptionHandler(value = {OutOfStockException.class})
+//        protected ResponseEntity<Object> handleProductDoesNotExistsException(OutOfStockException exception) {
+//            ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+//                    .timestamp(LocalDateTime.now())
+//                    .title("Product out of stock")
+//                    .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
+//                    .description(exception.getMessage())
+//                    .build();
+//
+//            return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
+//        }
+//}
     
