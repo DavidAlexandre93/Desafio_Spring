@@ -42,7 +42,7 @@ status correspondente.
 ○ Se houver um problema com o servidor e a conexão não puder ser
 feita, o código de status correspondente deve ser retornado.
 
-### B. Extra Bonus
+### Extra Bonus
 A plataforma afirmou que no futuro gostaria de ser capaz de realizar o desenvolvimento
 dos seguintes requisitos como uma melhoria:
 
@@ -66,15 +66,15 @@ desenvolvedores da solução, portanto os convidamos a incluir todas as melhoria
 considerem que possam impulsionar o projeto desenvolvido.
 
 ## Desenvolvedores
-Grupo 7 wave5
-```
-Bruno Mendes
-David Alexandre
-Maik Henrique
-Mariana Galdino
-Matheus dos Anjos Guerra
-Micaela Alves
-Pedro Henrique Dalpa
+*Grupo 7 wave5*
+
+* Bruno Mendes
+* David Alexandre
+* Maik Henrique
+* Mariana Galdino
+* Matheus dos Anjos Guerra
+* Micaela Alves
+* Pedro Henrique Dalpa
 
  
 
