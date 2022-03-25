@@ -15,6 +15,11 @@ public class ClientService {
 
     ClientRepository clientRepository;
 
+    /**
+     * Service correspondete a criação e cadastro de cliente na aplicação;
+     *
+     * @param input Objeto correspondente ao cliente a ser cadastrado;
+     */
     public void createClient(Client input) {
         List<Client> existingClients = clientRepository.findAll();
         AtomicReference<Boolean> exist = new AtomicReference<>(false);

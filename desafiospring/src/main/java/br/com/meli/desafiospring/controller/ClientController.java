@@ -23,6 +23,14 @@ public class ClientController {
     private final ModelMapper modelMapper;
     ClientService clientService;
 
+
+    /**
+     * Responsavel pela operação POST que cadastra novo cliente na aplicação;
+     *
+     * @param input Objeto correspondente a validação de um cliente a ser cadastrado;
+     *
+     * @return Mensagem de confirmação ou não de cadastro de cliente;
+     */
     @PostMapping("/insert-client")
     public ResponseEntity<?> postClient(@Valid @RequestBody ClientInputValidationDTO input) {
         try {
