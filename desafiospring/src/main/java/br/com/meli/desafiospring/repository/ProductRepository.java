@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Repositorio referente aos prdoutos cadastrados na aplicação;
+ */
 @Repository
 @AllArgsConstructor
 public class ProductRepository {
@@ -19,6 +22,14 @@ public class ProductRepository {
     private static final String FILE_PATH = "src/main/java/br/com/meli/desafiospring/files/products.json";
     private final FilePersistenceUtil<Product> filePersistence;
 
+    /**
+     * Author:
+     * Method:
+     * Description: permite escrita de objetos produto no repositorio;
+     *              usado para cadastrar novos produtos na aplicação;
+     *
+     * @param input lista de produtos a serem cadastrados no repositorio;
+     */
     public void writeFile(List<Product> input) {
         Map<Long, Product> productsMap = getProductsMap();
         input.forEach(i -> {
@@ -35,14 +46,38 @@ public class ProductRepository {
         });
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: permite recuperar uma lista com todos os objetos produto presentes no repositorio;
+     *
+     * @return lista com todos os objetos presentes produto no repositorio;
+     */
     public List<Product> findAll() {
         return filePersistence.readObjects(FILE_PATH, Product.class);
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: permite realizar a substituição de um produto por outro;
+     *
+     * @param oldProduct produto a ser retirado do repositorio;
+     * @param newProduct produto a ser adicionado no lugar do produto retirado;
+     *
+     * @return confirmação do sucesso ou não da operação de atualização;
+     */
     public boolean updateProduct(Product oldProduct, Product newProduct) {
         return filePersistence.updateElement(FILE_PATH, oldProduct, newProduct, Product.class);
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: permite a criação de um Map contendo os produtos cadastrados na aplicação;
+     *
+     * @return um Map contendo todos os produtos cadastrados na aplicação, usando o atributo ProductId como chave;
+     */
     public Map<Long, Product> getProductsMap() {
         return findAll().stream()
                 .collect(Collectors.toMap(Product::getProductId, Function.identity(), (r1, r2) -> r2));
