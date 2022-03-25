@@ -169,7 +169,7 @@
 			"response": []
 		},
 		{
-			"name": "R005 - Preço decrescente",
+			"name": "R006 - Preço decrescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -207,7 +207,7 @@
 			"response": []
 		},
 		{
-			"name": "R005 - Preço crescente",
+			"name": "R007 - Preço crescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
