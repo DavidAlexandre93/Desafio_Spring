@@ -46,5 +46,6 @@ public class ClientService {
 //        }
 //        return clientByState;
         return null;
+        // alteracao Bruno
    }
 }
