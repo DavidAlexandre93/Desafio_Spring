@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "bab838f4-9040-442b-979f-8b850071a687",
+		"name": "Desafio_Spring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "R08-R09-R10-Sucess",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articlesPurchaseRequest\":[\n      {\n         \"productId\":32,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":3\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":1\n       }\n     ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/purchase-request",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchase-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "R08-R09-R10-ProductNotFound",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articlesPurchaseRequest\":[\n        {\n         \"productId\":3222222,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":3\n        }\n    ]\n     \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/purchase-request",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchase-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "R08-R09-R10-OutOfStock",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articlesPurchaseRequest\":[\n        {\n         \"productId\":2,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":33333\n        }\n    ]\n     \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/purchase-request",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchase-request"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
