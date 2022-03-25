@@ -1,2 +1,0 @@
-1;David;40908043880;Sao Paulo
-2;Alexandre;40908043890; Rio de Janeiro
