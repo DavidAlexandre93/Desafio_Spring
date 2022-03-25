@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ProductStockAvailabilityValidator implements ShoppingCartValidator {
 
     @Override
-    public void isValid(Product stockProduct, Product targetProduct) {
+    public void validate(Product stockProduct, Product targetProduct) {
         if (stockProduct == null) {
             throw new ProductDoesNotExistsException(String.format("Product of id %d wasn't found.", targetProduct.getProductId()));
         }

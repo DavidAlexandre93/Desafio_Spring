@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface ShoppingCartValidator {
-    void isValid(Product stockProduct, Product targetProduct);
+    void validate(Product stockProduct, Product targetProduct);
 }

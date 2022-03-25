@@ -39,7 +39,7 @@ public class ProductService {
 
         return shoppingCart.getArticlesPurchaseRequest().stream().map(shoppingCartProduct -> {
             Product product = idToProductMap.get(shoppingCartProduct.getProductId());
-            shoppingCartValidators.stream().forEachOrdered(validator -> validator.isValid(product, shoppingCartProduct));
+            shoppingCartValidators.stream().forEachOrdered(validator -> validator.validate(product, shoppingCartProduct));
             int newProductQuantity = product.getQuantity() - shoppingCartProduct.getQuantity();
             updateProductQuantity(product, newProductQuantity);
             return product;
