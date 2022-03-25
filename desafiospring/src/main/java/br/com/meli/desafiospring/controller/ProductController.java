@@ -39,13 +39,7 @@ public class ProductController {
 
     @PostMapping("/insert-articles-request")
     public ResponseEntity<?> postProducts(@Valid @RequestBody ArticlesDTO input) {
-        try {
-            return ResponseEntity.ok(productService.createProducts(input));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        return ResponseEntity.ok(productService.createProducts(input));
     }
 
     @PostMapping("/purchase-request")
@@ -63,8 +57,8 @@ public class ProductController {
     }
 
     @GetMapping("/articles/all")
-    public List<?> getAllProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<?> getAllProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
 }

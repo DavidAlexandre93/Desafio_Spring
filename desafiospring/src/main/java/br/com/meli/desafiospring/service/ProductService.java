@@ -5,6 +5,8 @@ import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ShoppingCart;
 import br.com.meli.desafiospring.enums.ProductOrderByEnum;
+import br.com.meli.desafiospring.exception.DuplicatedResourceException;
+import br.com.meli.desafiospring.exception.OutOfStockException;
 import br.com.meli.desafiospring.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class ProductService {
+
+    private final ProductRepository productRepository;
+    private final List<ShoppingCartValidator> shoppingCartValidators;
 
     /**
      * R005, R006, R007
@@ -39,8 +44,7 @@ public class ProductService {
 
         return result;
     };
-    private final ProductRepository productRepository;
-    private final List<ShoppingCartValidator> shoppingCartValidators;
+
 
     public List<ProductPurchaseRequestDTO> createProducts(ArticlesDTO input) {
         List<Product> newProducts = input.getArticles();
@@ -64,20 +68,17 @@ public class ProductService {
     }
 
     private List<Product> findTargetProducts(ShoppingCart shoppingCart) {
-        Map<Long, Product> idToProductMap = productRepository.findAll().stream()
-                .collect(Collectors.toMap(Product::getProductId, Function.identity(), (r1, r2) -> r2));
+        Map<Long, Product> productsMap = productRepository.getProductsMap();
 
-        List<Product> boughtProducts = shoppingCart.getArticlesPurchaseRequest().stream()
+        return shoppingCart.getArticlesPurchaseRequest().stream()
                 .map(shoppingCartProduct -> {
-                    Product product = idToProductMap.get(shoppingCartProduct.getProductId());
+                    Product product = productsMap.get(shoppingCartProduct.getProductId());
                     shoppingCartValidators.stream().forEachOrdered(validator -> validator.validate(product, shoppingCartProduct));
                     int newProductQuantity = product.getQuantity() - shoppingCartProduct.getQuantity();
                     updateProductQuantity(product, newProductQuantity);
                     product.setQuantity(shoppingCartProduct.getQuantity());
                     return product;
                 }).collect(Collectors.toList());
-
-        return boughtProducts;
     }
 
     public void updateProductQuantity(Product product, int newProductQuantity) {
