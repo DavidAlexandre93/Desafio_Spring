@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,6 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class ProductController {
 
-    @Autowired
     private final ProductService productService;
     private final ModelMapper modelMapper;
 
@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @PostMapping("/insert-articles-request")
-    public ResponseEntity<?> postProducts(@RequestBody ArticlesDTO input) {
+    public ResponseEntity<?> postProducts(@Valid @RequestBody ArticlesDTO input) {
         try {
             return ResponseEntity.ok(productService.createProducts(input));
 
@@ -49,7 +49,7 @@ public class ProductController {
     }
 
     @PostMapping("/purchase-request")
-    public ResponseEntity<?> purchaseProducts(@RequestBody PurchaseRequestDTO purchaseRequestDTO) {
+    public ResponseEntity<?> purchaseProducts(@Valid @RequestBody PurchaseRequestDTO purchaseRequestDTO) {
         ShoppingCart shoppingCart = modelMapper.map(purchaseRequestDTO, ShoppingCart.class);
         ShoppingCart result = productService.sellProducts(shoppingCart);
         return ResponseEntity.ok(result);
