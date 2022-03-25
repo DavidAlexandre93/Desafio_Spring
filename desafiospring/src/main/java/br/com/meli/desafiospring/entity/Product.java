@@ -1,6 +1,8 @@
 package br.com.meli.desafiospring.entity;
 
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
@@ -13,9 +15,9 @@ public class Product implements Cloneable {
    private String name;
    private String category;
    private String brand;
-   private String price;
-   private String quantity;
-   private String freeShipping;
+   private BigDecimal price;
+   private Integer quantity;
+   private Boolean freeShipping;
    private String prestige;
 
    @Override

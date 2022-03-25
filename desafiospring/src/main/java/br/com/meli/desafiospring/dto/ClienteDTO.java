@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ClienteDTO {
 
-    private String clientId;
+    private Integer clientId;
     private String name;
     private String cpf;
     private String state;
@@ -25,6 +25,6 @@ public class ClienteDTO {
      * @return
      */
     public static List<ClienteDTO> converte(List<Client> cliente) {
-        return cliente.stream().map(c -> new ClienteDTO(c.getClientId(), c.getName(), c.getCpf(), c.getState())).collect(Collectors.toList());
+        return cliente.stream().map(c -> new ClienteDTO(c.getId(), c.getName(), c.getCpf(), c.getState())).collect(Collectors.toList());
     }
 }

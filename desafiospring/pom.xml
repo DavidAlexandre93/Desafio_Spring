@@ -32,7 +32,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
+
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -40,18 +40,12 @@
 			<version>3.3.2</version>
 		</dependency>
 
-=======
         <dependency>
             <groupId>com.vaadin.external.google</groupId>
             <artifactId>android-json</artifactId>
             <version>0.0.20131108.vaadin1</version>
             <scope>compile</scope>
         </dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.13.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
@@ -78,7 +72,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
->>>>>>> dev
 	</dependencies>
 
 	<build>

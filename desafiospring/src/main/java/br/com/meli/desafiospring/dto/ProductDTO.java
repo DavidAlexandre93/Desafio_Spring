@@ -2,6 +2,8 @@ package br.com.meli.desafiospring.dto;
 
 import br.com.meli.desafiospring.entity.Product;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +16,9 @@ public class ProductDTO {
     private String name;
     private String category;
     private String brand;
-    private String price;
-    private String quantity;
-    private String freeShipping;
+    private BigDecimal price;
+    private Integer quantity;
+    private Boolean freeShipping;
     private String prestige;
 
     /**
