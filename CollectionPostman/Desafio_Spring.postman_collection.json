@@ -91,6 +91,158 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "R005 - Alfabeto Crescente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articles\":[\n      {\n         \"productId\":34,\n         \"name\":\"Serra de Bancada\",\n         \"category\":\"Ferramentas\",\n         \"brand\":\"FORTGPRO\",\n         \"price\":1800.00,\n         \"quantity\":5,\n         \"freeShipping\":true,\n         \"prestige\":\"****\"\n      }\n   ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/articles?order=0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "R005 - Alfabeto Decrescente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articles\":[\n      {\n         \"productId\":34,\n         \"name\":\"Serra de Bancada\",\n         \"category\":\"Ferramentas\",\n         \"brand\":\"FORTGPRO\",\n         \"price\":1800.00,\n         \"quantity\":5,\n         \"freeShipping\":true,\n         \"prestige\":\"****\"\n      }\n   ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/articles?order=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "R005 - Preço decrescente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articles\":[\n      {\n         \"productId\":34,\n         \"name\":\"Serra de Bancada\",\n         \"category\":\"Ferramentas\",\n         \"brand\":\"FORTGPRO\",\n         \"price\":1800.00,\n         \"quantity\":5,\n         \"freeShipping\":true,\n         \"prestige\":\"****\"\n      }\n   ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/articles?order=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "R005 - Preço crescente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articles\":[\n      {\n         \"productId\":34,\n         \"name\":\"Serra de Bancada\",\n         \"category\":\"Ferramentas\",\n         \"brand\":\"FORTGPRO\",\n         \"price\":1800.00,\n         \"quantity\":5,\n         \"freeShipping\":true,\n         \"prestige\":\"****\"\n      }\n   ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/articles?order=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
