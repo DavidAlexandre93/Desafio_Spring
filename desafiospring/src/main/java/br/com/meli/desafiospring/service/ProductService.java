@@ -20,6 +20,7 @@ public class ProductService {
     @Autowired
     private final ProductRepository productRepository;
 
+
     public List<ProductDTO> createProducts(InputDTO input) {
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
@@ -63,6 +64,8 @@ public class ProductService {
         }
         return products;
     }
+
+
 }
 
 
