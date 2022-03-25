@@ -67,7 +67,7 @@ considerem que possam impulsionar o projeto desenvolvido.
 
 ## Desenvolvedores
 Grupo 7 wave5
-
+```
 Bruno Mendes
 David Alexandre
 Maik Henrique
