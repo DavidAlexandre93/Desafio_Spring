@@ -26,7 +26,7 @@ public class ClientController {
 
     private final ModelMapper modelMapper;
 
-    private ClientService clientService;
+    private final ClientService clientService;
 
     @PostMapping("/insert-client")
     public ResponseEntity<?> postClient(@Valid @RequestBody ClientInputValidationDTO input) {
@@ -41,7 +41,7 @@ public class ClientController {
         }
     }
 
-    @GetMapping("/api/v1/articles/client/state") // metodo para filtrar por estado
+    @GetMapping("/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state) {
 
         List<Client> clientByState = clientService.getClientsByState(state);
