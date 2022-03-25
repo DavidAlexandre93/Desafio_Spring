@@ -15,7 +15,7 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @GetMapping("/api/v1/articles/client/state") // metodo para filtrar por categoria
+    @GetMapping("/api/v1/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state){
         List<Client> clientByState = clientService.getClientsByState(state);
 
