@@ -1,47 +1,61 @@
 package br.com.meli.desafiospring.service;
 
-import br.com.meli.desafiospring.dto.InputDTO;
-import br.com.meli.desafiospring.dto.ProductDTO;
 import br.com.meli.desafiospring.entity.Product;
-import br.com.meli.desafiospring.entity.ProdutoSimplificado;
+import br.com.meli.desafiospring.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import br.com.meli.desafiospring.dto.InputDTO;
+import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
+import br.com.meli.desafiospring.entity.Product;
+import br.com.meli.desafiospring.entity.ShoppingCart;
 import br.com.meli.desafiospring.enums.ProductOrderByEnum;
+import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
+import br.com.meli.desafiospring.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import br.com.meli.desafiospring.repository.ProductRepository;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-
-
-
-
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ProductService {
 
+    @Autowired
     private final ProductRepository productRepository;
 
-    public List<ProductDTO> createProducts(InputDTO input) {
+    public List<ProductPurchaseRequestDTO> createProducts(InputDTO input) {
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
-        return newProducts.stream().map(a -> new ProductDTO().convert(a)).collect(Collectors.toList());
+        return newProducts.stream().map(a -> new ProductPurchaseRequestDTO().convert(a)).collect(Collectors.toList());
     }
-    public List<Product> findByCritirion(String category, Boolean freeShipping, Integer orderBy ){
+
+    public List<Product> findByCriteria(String category, Boolean freeShipping, Integer orderBy ){
         return productRepository.findAll().stream().sorted(ProductService.p.apply(orderBy)).collect(Collectors.toList());
+    }
+
+    public List<Product> sellProducts(ShoppingCart shoppingCart) {
+        Map<Long, Product> idToProductMap = productRepository.findAll().stream()
+                .collect(Collectors.toMap(Product::getProductId, Function.identity(), (r1, r2) -> r1));
+
+        return shoppingCart.getArticlesPurchaseRequest().stream().map(shopppingCartProduct -> {
+            long targetProductId = shopppingCartProduct.getProductId();
+            Product product = idToProductMap.get(shopppingCartProduct.getProductId());
+            if (product == null) {
+                throw new ProductDoesNotExistsException(String.format("Product of id %d wasn't found.", targetProductId));
+            }
+            return product;
+
+        }).collect(Collectors.toList());
     }
 
     /**
      *  R005, R006, R007
      */
-    public static Function<Integer, Comparator<Product>> p = orderBy -> (Comparator<Product>) (o1, o2) -> {
+    private static Function<Integer, Comparator<Product>> p = orderBy -> (Comparator<Product>) (o1, o2) -> {
         int result = 0;
 
         if (ProductOrderByEnum.PRICE_ASC.getValue().equals(orderBy)) {
@@ -63,7 +77,18 @@ public class ProductService {
     public List<Product> findAll() {
         return productRepository.findAll();
     }
+  
+    public List<Product> getProductsByCategory(String category){
 
+        List<Product> products = productRepository.findAll();
+
+        if(category!=null && !category.isEmpty() ) {
+            return products.stream()
+                    .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                    .collect(Collectors.toList());
+        }
+        return products;
+    }
 }
 
 

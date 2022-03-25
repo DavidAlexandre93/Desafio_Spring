@@ -1,5 +1,6 @@
 package br.com.meli.desafiospring.exception.handler;
 import br.com.meli.desafiospring.dto.ExceptionPayloadDTO;
+import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
 import br.com.meli.desafiospring.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,5 +22,17 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
                 .build();
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(value = {ProductDoesNotExistsException.class})
+    protected ResponseEntity<Object> handleProductDoesNotExistsException(ProductDoesNotExistsException exception) {
+        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+                .timestamp(LocalDateTime.now())
+                .title("Product not found")
+                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
+                .description(exception.getMessage())
+                .build();
+
+        return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }
