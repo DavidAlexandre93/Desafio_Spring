@@ -4,7 +4,6 @@ package br.com.meli.desafiospring.repository;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.util.Util;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +27,9 @@ public class ProductRepository<T>{
     }
 
 
-    public Product obter(String category) {
+    /*public Product obter(String category) {
         // TODO Auto-generated method stub
         return null;
-    }
+    }*/
 
 }
