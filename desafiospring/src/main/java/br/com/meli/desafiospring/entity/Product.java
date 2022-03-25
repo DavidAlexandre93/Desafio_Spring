@@ -16,13 +16,12 @@ public class Product {
    private String freeShipping;
    private String prestige;
 
-
-
-   /*
-   Author: David Alexandre
-   Method: Entity com os dados Produto
-   Description: Concatenar os dados Entity com ";", retornando valueof String de todos
-   */
+   /**
+    * Author: David Alexandre
+    * Method: Entity com os dados Produto
+    * Description: Concatenar os dados Entity com ";", retornando valueof String de todos
+    * @return
+    */
    @Override
    public String toString() {
       return String.valueOf(productld).concat(";").concat(name).concat(";")

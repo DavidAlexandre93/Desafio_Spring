@@ -17,11 +17,13 @@ public class ClienteDTO {
     private String cpf;
     private String state;
 
-    /*
-    Author: David Alexandre
-    Method: Coletor para retornar todos os dados da lista Cliente
-    Description: Buscar em entity todos os dados mapeados Cliente
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Coletor para retornar todos os dados da lista Cliente
+     * Description: Buscar em entity todos os dados mapeados Cliente
+     * @param cliente
+     * @return
+     */
     public static List<ClienteDTO> converte(List<Client> cliente) {
         return cliente.stream().map(c -> new ClienteDTO(c.getClienteId(), c.getName(), c.getCpf(), c.getState())).collect(Collectors.toList());
     }

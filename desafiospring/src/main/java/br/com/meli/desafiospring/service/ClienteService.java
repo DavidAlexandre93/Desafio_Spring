@@ -15,11 +15,13 @@ public class ClienteService {
     @Autowired
     private ClienteRepository<Client> repository;
 
-    /*
-       Author: David Alexandre
-       Method: Retornar somente o dado buscado na lista de clientes
-       Description: Realizar a leitura da lista e pegar somente os dados passados em cliente
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de clientes
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em cliente
+     * @param name
+     * @return
+     */
     public List<Client> listaClientes(String name){
         List<Client> clienteList = new ArrayList<>();
         for (Client c: repository.lista()){
@@ -30,12 +32,12 @@ public class ClienteService {
         return clienteList;
     }
 
-
-    /*
-      Author: David Alexandre
-      Method: Retornar a lista de cliente
-      Description: Realizar a leitura da lista e retornar todos os clientes
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar a lista de cliente
+     * Description: Realizar a leitura da lista e retornar todos os clientes
+     * @return
+     */
     public List<Client> listClient(){
         List<Client> clienteList = new ArrayList<>();
         for (Client c: repository.lista()){

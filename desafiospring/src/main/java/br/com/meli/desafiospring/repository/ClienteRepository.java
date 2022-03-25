@@ -13,13 +13,13 @@ public class ClienteRepository<T> {
     private Util<Client> Util;
     private static final String CLIENTES_TXT = "clientes.txt";
 
-
-        /*
-        Author: David Alexandre
-        Method: Realizar leitura do txt
-        Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
-        */
-        public List<Client> lista() {
+    /**
+     * Author: David Alexandre
+     * Method: Realizar leitura do txt
+     * Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
+     * @return
+     */
+    public List<Client> lista() {
             Util = new Util<Client>();
             List<String> registros = Util.leitura(CLIENTES_TXT);
             List<Client> result = new ArrayList<Client>();

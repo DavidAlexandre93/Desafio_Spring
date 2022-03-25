@@ -15,11 +15,12 @@ public class Client {
         private String cpf;
         private String state;
 
-        /*
-        Author: David Alexandre
-        Method: Entity com os dados Cliente
-        Description: Concatenar os dados Entity com ";", retornando valueof String de todos
-        */
+        /**
+         * Author: David Alexandre
+         * Method: Entity com os dados Cliente
+         * Description: Concatenar os dados Entity com ";", retornando valueof String de todos
+         * @return
+         */
         @Override
         public String toString() {
             return String.valueOf(clienteId).concat(";").concat(name).concat(";")

@@ -8,12 +8,13 @@ import java.util.Scanner;
 
 public class Util<T> {
 
-
-    /*
-        Author: David Alexandre
-        Method: realizar a leitura do arquivo
-        Description: Realizar leitura do arquivo passado em repository scanneando item por item
-    */
+    /**
+     * Author: David Alexandre
+     * Method: realizar a leitura do arquivo
+     * Description: Realizar leitura do arquivo passado em repository scanneando item por item
+     * @param arquivo
+     * @return
+     */
     public static List<String> leitura(String arquivo){
         Scanner scanner;
         List<String> result = new ArrayList<String>();

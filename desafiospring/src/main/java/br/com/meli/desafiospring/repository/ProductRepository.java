@@ -13,12 +13,12 @@ public class ProductRepository<T>{
     private Util<Product> Util;
     private static final String PRODUTOS_TXT = "produtos.txt";
 
-
-    /*
-       Author: David Alexandre
-       Method: Realizar leitura do txt
-       Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Realizar leitura do txt
+     * Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
+     * @return
+     */
     public List<Product> lista() {
         Util = new Util<Product>();
         List<String> registros = Util.leitura(PRODUTOS_TXT);

@@ -19,11 +19,13 @@ public class ProductDTO {
     private String freeShipping;
     private String prestige;
 
-    /*
-    Author: David Alexandre
-    Method: Coletor para retornar todos os dados da lista Produto
-    Description: Buscar em entity todos os dados mapeados Produto
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Coletor para retornar todos os dados da lista Produto
+     * Description: Buscar em entity todos os dados mapeados Produto
+     * @param product
+     * @return
+     */
     public static List<ProductDTO> converte(List<Product> product) {
         return product.stream().map(p -> new ProductDTO(p.getProductld(), p.getName(), p.getCategory(), p.getBrand(),
                 p.getPrice(), p.getQuantity(), p.getFreeShipping(), p.getPrestige())).collect(Collectors.toList());

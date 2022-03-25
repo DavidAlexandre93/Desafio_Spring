@@ -19,11 +19,14 @@ public class ProductService {
     @Autowired
     private ProductRepository<Product> repository;
 
-    /*
-        Author: David Alexandre
-        Method: Retornar somente o dado buscado na lista de produtos
-        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param category
+     * @param freeShipping
+     * @return
+     */
     public List<Product> listaPorCategoriaFreeshipping(String category, String freeShipping){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -34,11 +37,14 @@ public class ProductService {
         return productList;
     }
 
-    /*
-        Author: David Alexandre
-        Method: Retornar somente o dado buscado na lista de produtos
-        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param name
+     * @param brand
+     * @return
+     */
     public List<Product> listaPorNameBrand(String name, String brand){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -49,11 +55,14 @@ public class ProductService {
         return productList;
     }
 
-    /*
-        Author: David Alexandre
-        Method: Retornar somente o dado buscado na lista de produtos
-        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param price
+     * @param quantity
+     * @return
+     */
     public List<Product> listaPorPriceQuantity(String price, String quantity){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -64,11 +73,14 @@ public class ProductService {
         return productList;
     }
 
-    /*
-        Author: David Alexandre
-        Method: Retornar somente o dado buscado na lista de produtos
-        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param name
+     * @param category
+     * @return
+     */
     public List<Product> listaPorNameCategory(String name, String category){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -79,11 +91,14 @@ public class ProductService {
         return productList;
     }
 
-    /*
-        Author: David Alexandre
-        Method: Retornar somente o dado buscado na lista de produtos
-        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-    */
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param productId
+     * @param prestige
+     * @return
+     */
     public List<Product> listaPorProductIdPrestige(String productId, String prestige){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
