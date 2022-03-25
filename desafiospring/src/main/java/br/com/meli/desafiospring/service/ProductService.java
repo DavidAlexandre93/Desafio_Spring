@@ -4,11 +4,8 @@ import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -19,36 +16,14 @@ public class ProductService {
         this.product = product;
     }
 
-
-    /*
-    Método pra validar produto em falta no estoque
-
-    @Override
-    public void valida() throws ProductException {
-        if(product.getQuantity().toString().isEmpty())
-            throw new ProductException("Não à produto suficiente em estoque!");
-    }
-    */
-
     @Autowired
     private ProductRepository<Product> repository;
 
-    /*public synchronized List<Product> lista(String category, Double freeshipping, String name, String brand){
-
-        if(category!=null && !category.isEmpty()) {
-            return repository.lista(category).stream()
-                    .filter(p->p.getCategory().equals(freeshipping))
-                    .collect(Collectors.toList());
-        }
-        if(name!=null && !brand.isEmpty()) {
-            return repository.lista(category).stream()
-                    .filter(p->p.getName().equals(brand))
-                    .collect(Collectors.toList());
-        }
-
-        return repository.lista(category);
-    }*/
-
+    /*
+        Author: David Alexandre
+        Method: Retornar somente o dado buscado na lista de produtos
+        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+    */
     public List<Product> listaPorCategoriaFreeshipping(String category, String freeShipping){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -59,6 +34,11 @@ public class ProductService {
         return productList;
     }
 
+    /*
+        Author: David Alexandre
+        Method: Retornar somente o dado buscado na lista de produtos
+        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+    */
     public List<Product> listaPorNameBrand(String name, String brand){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -69,6 +49,11 @@ public class ProductService {
         return productList;
     }
 
+    /*
+        Author: David Alexandre
+        Method: Retornar somente o dado buscado na lista de produtos
+        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+    */
     public List<Product> listaPorPriceQuantity(String price, String quantity){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -79,6 +64,11 @@ public class ProductService {
         return productList;
     }
 
+    /*
+        Author: David Alexandre
+        Method: Retornar somente o dado buscado na lista de produtos
+        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+    */
     public List<Product> listaPorNameCategory(String name, String category){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -89,6 +79,11 @@ public class ProductService {
         return productList;
     }
 
+    /*
+        Author: David Alexandre
+        Method: Retornar somente o dado buscado na lista de produtos
+        Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+    */
     public List<Product> listaPorProductIdPrestige(String productId, String prestige){
         List<Product> productList = new ArrayList<>();
         for (Product p: repository.lista()){
@@ -98,14 +93,6 @@ public class ProductService {
         }
         return productList;
     }
-
-
-
-
-    /*public synchronized Product obter(String category) {
-        Optional<Product> optional = repository.lista(category).stream().filter(a->a.getCategory().equals(category)).findFirst();
-        return optional.orElse(new Product());
-    }*/
 
 
 }

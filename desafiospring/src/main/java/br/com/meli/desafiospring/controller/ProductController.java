@@ -11,56 +11,76 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-/*@Api(value = "Produtos")*/
 public class ProductController {
 
     @Autowired
-    //private ProductRepository<ProductService> productService;
     private ProductService productService;
 
-    /*@ApiOperation(value = "Fetch all existing ads based on params")*/
+    /*
+    Author: David Alexandre
+    Method: End Point Request Param
+    Description: Buscar os category com seus respectivos freeshipping, sendo true ou false
+    */
     @GetMapping("/api/v1/articles/")
     public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category, @RequestParam String freeShipping) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category,freeShipping));
         return ResponseEntity.ok(result);
     }
 
-    /*@ApiOperation(value = "Fetch all existing ads based on params")*/
-    @GetMapping("/api/v1/articles/{category}/{freeShipping}")
+    /*
+    Author: David Alexandre
+    Method: End Point Path Variable
+    Description: Buscar o produto com sua category com seus respectivos freeshipping, sendo true ou false
+    */
+    @GetMapping("/api/v1/articles/categoryfreeshipping/{category}/{freeShipping}")
     public ResponseEntity<List<ProductDTO>> categoryFreeshipping(@PathVariable String category, @PathVariable String freeShipping) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category,freeShipping));
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/api/v2/articles/{name}/{brand}")
+    /*
+    Author: David Alexandre
+    Method: End Point Path Variable
+    Description: Buscar o produto com seu name e respectivo brand
+    */
+    @GetMapping("/api/v1/articles/namebrand/{name}/{brand}")
     public ResponseEntity<List<ProductDTO>> nameBrand(@PathVariable String name, @PathVariable String brand){
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorNameBrand(name, brand));
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/api/v3/articles/{price}/{quantity}")
+    /*
+    Author: David Alexandre
+    Method: End Point Path Variable
+    Description: Buscar o produto com seu price e quantity
+    */
+    @GetMapping("/api/v1/articles/pricequantity/{price}/{quantity}")
     public ResponseEntity<List<ProductDTO>> priceQuantity(@PathVariable String price, @PathVariable String quantity){
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorPriceQuantity(price, quantity));
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/api/v4/articles/{name}/{category}")
+    /*
+    Author: David Alexandre
+    Method: End Point Path Variable
+    Description: Buscar o produto com seu name e sua respectiva category
+    */
+    @GetMapping("/api/v1/articles/namecategory/{name}/{category}")
     public ResponseEntity<List<ProductDTO>> nameCategory(@PathVariable String name, @PathVariable String category){
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorNameCategory(name, category));
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/api/v5/articles/{productId}/{prestige}")
+    /*
+    Author: David Alexandre
+    Method: End Point Path Variable
+    Description: Buscar o produto com seu ID e respectivo prestige
+    */
+    @GetMapping("/api/v1/articles/productprestige/{productId}/{prestige}")
     public ResponseEntity<List<ProductDTO>> productIdPrestige(@PathVariable String productId, @PathVariable String prestige){
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorProductIdPrestige(productId, prestige));
         return ResponseEntity.ok(result);
     }
 
-    /*@ApiOperation(value = "Fetch all existing ads based on params")
-    @GetMapping("/api/v1/articles/")
-    public ResponseEntity<List<ProductDTO>> obter(String category) {
-        Product product = productService.obter(category);
-        return ResponseEntity.ok(new ProductDTO().converte((List<Product>) product));
-    }*/
 }
 

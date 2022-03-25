@@ -14,6 +14,11 @@ public class ProductRepository<T>{
     private static final String PRODUTOS_TXT = "produtos.txt";
 
 
+    /*
+       Author: David Alexandre
+       Method: Realizar leitura do txt
+       Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
+    */
     public List<Product> lista() {
         Util = new Util<Product>();
         List<String> registros = Util.leitura(PRODUTOS_TXT);
@@ -25,11 +30,5 @@ public class ProductRepository<T>{
         });
         return result;
     }
-
-
-    /*public Product obter(String category) {
-        // TODO Auto-generated method stub
-        return null;
-    }*/
 
 }

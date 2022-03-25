@@ -1,12 +1,6 @@
 package br.com.meli.desafiospring.entity;
 
-
 import lombok.*;
-import org.springframework.context.annotation.Conditional;
-
-
-import java.math.BigDecimal;
-
 
 @Data
 @NoArgsConstructor
@@ -23,6 +17,12 @@ public class Product {
    private String prestige;
 
 
+
+   /*
+   Author: David Alexandre
+   Method: Entity com os dados Produto
+   Description: Concatenar os dados Entity com ";", retornando valueof String de todos
+   */
    @Override
    public String toString() {
       return String.valueOf(productld).concat(";").concat(name).concat(";")
