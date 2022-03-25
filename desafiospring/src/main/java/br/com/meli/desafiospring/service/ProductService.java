@@ -46,10 +46,10 @@ public class ProductService {
     };
 
 
-    public List<ProductPurchaseRequestDTO> createProducts(ArticlesDTO input) {
+    public List<Product> createProducts(ArticlesDTO input) {
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
-        return newProducts.stream().map(a -> new ProductPurchaseRequestDTO().convert(a)).collect(Collectors.toList());
+        return newProducts;
     }
 
     public List<Product> findByCriteria(String category, Boolean freeShipping, Integer orderBy) {

@@ -1,6 +1,7 @@
 package br.com.meli.desafiospring.controller;
 
 import br.com.meli.desafiospring.dto.ArticlesDTO;
+import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
 import br.com.meli.desafiospring.dto.PurchaseRequestDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ShoppingCart;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -39,7 +41,10 @@ public class ProductController {
 
     @PostMapping("/insert-articles-request")
     public ResponseEntity<?> postProducts(@Valid @RequestBody ArticlesDTO input) {
-        return ResponseEntity.ok(productService.createProducts(input));
+        List<Product> products = productService.createProducts(input);
+        List<ProductPurchaseRequestDTO> resultDTO = products
+                .stream().map(p -> modelMapper.map(p, ProductPurchaseRequestDTO.class)).collect(Collectors.toList());
+        return ResponseEntity.ok(resultDTO);
     }
 
     @PostMapping("/purchase-request")

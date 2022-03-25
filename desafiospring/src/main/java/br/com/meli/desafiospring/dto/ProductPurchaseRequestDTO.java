@@ -1,6 +1,7 @@
 package br.com.meli.desafiospring.dto;
 
 import br.com.meli.desafiospring.entity.Product;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,14 +25,9 @@ public class ProductPurchaseRequestDTO {
     @Range(min = 1, message = "The minimum product quantity is 1")
     private Integer quantity;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotBlank(message = "Please provide a brand")
     private String brand;
 
-    public ProductPurchaseRequestDTO convert (Product product) {
-        this.productId = product.getProductId();
-        this.name = product.getName();
-        this.quantity = product.getQuantity();
-        return this;
-    }
 
 }
