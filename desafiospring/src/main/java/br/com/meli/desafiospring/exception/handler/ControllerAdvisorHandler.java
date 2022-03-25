@@ -1,5 +1,6 @@
 package br.com.meli.desafiospring.exception.handler;
 import br.com.meli.desafiospring.dto.ExceptionPayloadDTO;
+import br.com.meli.desafiospring.exception.ClientRegisteredException;
 import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
 import br.com.meli.desafiospring.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,17 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
                 .build();
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(value = {ClientRegisteredException.class})
+    protected ResponseEntity<Object> handleClientRegisteredException(ClientRegisteredException exception) {
+        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+                .timestamp(LocalDateTime.now())
+                .title("Client Already Registered")
+                .statusCode(HttpStatus.CONFLICT.value())
+                .description(exception.getMessage())
+                .build();
+
+        return new ResponseEntity<>(exceptionPayload, HttpStatus.CONFLICT);
     }
 }
