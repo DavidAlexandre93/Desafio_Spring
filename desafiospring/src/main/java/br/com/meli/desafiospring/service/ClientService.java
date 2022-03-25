@@ -1,7 +1,6 @@
 package br.com.meli.desafiospring.service;
 
 import br.com.meli.desafiospring.entity.Client;
-
 import br.com.meli.desafiospring.exception.ClientRegisteredException;
 import br.com.meli.desafiospring.repository.ClientRepository;
 import lombok.AllArgsConstructor;
@@ -49,4 +48,5 @@ public class ClientService {
         return clientByState;
 
     }
+
 }
