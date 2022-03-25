@@ -61,6 +61,10 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
                 .title("Fieldset validation error")
                 .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
                 .description(ex.getMessage())
+                .build();
+
+        return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
           
     @ExceptionHandler(value = {OutOfStockException.class})
     protected ResponseEntity<Object> handleProductDoesNotExistsException(OutOfStockException exception) {
