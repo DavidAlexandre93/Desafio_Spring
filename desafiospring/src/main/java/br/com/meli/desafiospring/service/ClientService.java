@@ -6,6 +6,7 @@ import br.com.meli.desafiospring.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -32,5 +33,20 @@ public class ClientService {
                 throw new ClientRegisteredException("Client already registered");
             }
         }
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar a lista de cliente
+     * Description: Realizar a leitura da lista e retornar todos os clientes
+     * @return
+     */
+    public List<Client> listClient(){
+        List<Client> clienteList = new ArrayList<>();
+        for (Client c: clientRepository.findAll()){
+
+            clienteList.add(c);
+        }
+        return clienteList;
     }
 }

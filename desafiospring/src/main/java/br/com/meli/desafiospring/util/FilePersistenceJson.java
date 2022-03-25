@@ -97,5 +97,4 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
         }
         return objectMapper.createArrayNode();
     }
-
 }

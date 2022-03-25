@@ -1,6 +1,7 @@
 package br.com.meli.desafiospring.controller;
 
 import br.com.meli.desafiospring.dto.ClientInputValidationDTO;
+import br.com.meli.desafiospring.dto.ClienteDTO;
 import br.com.meli.desafiospring.entity.Client;
 import br.com.meli.desafiospring.exception.ClientRegisteredException;
 import br.com.meli.desafiospring.service.ClientService;
@@ -8,12 +9,10 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -33,5 +32,17 @@ public class ClientController {
         } catch (ClientRegisteredException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: End Point
+     * Description: listar todos os clientes
+     * @return
+     */
+    @GetMapping("/api/v1/articles/client")
+    public ResponseEntity<List<ClienteDTO>> listarClientes() {
+        List<ClienteDTO> result = ClienteDTO.converte(clientService.listClient());
+        return ResponseEntity.ok(result);
     }
 }
