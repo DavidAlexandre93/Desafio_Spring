@@ -15,13 +15,14 @@ public class ClientService {
 
     public List<Client> getClientsByState(String state){
 
-        List<Client> clientByState = clientRepository.clients();
-
-        if(state!=null && !state.isEmpty() ) {
-            return clientByState.stream()
-                    .filter(client -> client.getState().equalsIgnoreCase(state))
-                    .collect(Collectors.toList());
-        }
-        return clientByState;
-    }
+//        List<Client> clientByState = clientRepository.findAll();
+//
+//        if(state!=null && !state.isEmpty() ) {
+//            return clientByState.stream()
+//                    .filter(client -> client.getState().equalsIgnoreCase(state))
+//                    .collect(Collectors.toList());
+//        }
+//        return clientByState;
+        return null;
+   }
 }
