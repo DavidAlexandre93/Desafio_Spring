@@ -5,6 +5,11 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+
+/**
+ * Entidade principal da aplicação que representa um produto;
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor

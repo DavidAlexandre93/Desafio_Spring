@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Entidade que representa um carrinho de compras, necessario no processo de compra;
+ */
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
