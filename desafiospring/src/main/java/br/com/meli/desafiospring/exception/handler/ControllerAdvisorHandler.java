@@ -1,9 +1,6 @@
 package br.com.meli.desafiospring.exception.handler;
 import br.com.meli.desafiospring.dto.ExceptionPayloadDTO;
-import br.com.meli.desafiospring.exception.ClientRegisteredException;
-import br.com.meli.desafiospring.exception.OutOfStockException;
-import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
-import br.com.meli.desafiospring.exception.ResourceNotFoundException;
+import br.com.meli.desafiospring.exception.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
@@ -77,4 +75,18 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+
+    @ExceptionHandler(value = {DuplicatedResourceException.class})
+    protected ResponseEntity<Object> handleDuplicatedResourceException(DuplicatedResourceException exception) {
+        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+                .timestamp(LocalDateTime.now())
+                .title("Duplicated resource")
+                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
+                .description(exception.getMessage())
+                .build();
+
+        return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
 }
