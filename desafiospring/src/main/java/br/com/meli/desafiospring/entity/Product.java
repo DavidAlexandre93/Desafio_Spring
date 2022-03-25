@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Product {
 
-   private String productld;
+   private String productId;
    private String name;
    private String category;
    private String brand;
@@ -24,7 +24,7 @@ public class Product {
     */
    @Override
    public String toString() {
-      return String.valueOf(productld).concat(";").concat(name).concat(";")
+      return String.valueOf(productId).concat(";").concat(name).concat(";")
               .concat(category).concat(";").concat(brand).concat(";").concat(String.valueOf(price).concat(";").concat(String.valueOf(quantity).concat(";"))
                       .concat(String.valueOf(freeShipping).concat(";")).concat(prestige).concat(";"));
    }

@@ -25,6 +25,6 @@ public class ClienteDTO {
      * @return
      */
     public static List<ClienteDTO> converte(List<Client> cliente) {
-        return cliente.stream().map(c -> new ClienteDTO(c.getClienteId(), c.getName(), c.getCpf(), c.getState())).collect(Collectors.toList());
+        return cliente.stream().map(c -> new ClienteDTO(c.getClientId(), c.getName(), c.getCpf(), c.getState())).collect(Collectors.toList());
     }
 }

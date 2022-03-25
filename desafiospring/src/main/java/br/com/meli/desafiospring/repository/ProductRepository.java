@@ -2,16 +2,18 @@ package br.com.meli.desafiospring.repository;
 
 
 import br.com.meli.desafiospring.entity.Product;
-import br.com.meli.desafiospring.util.Util;
+import br.com.meli.desafiospring.util.FilePersistenceJson;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class ProductRepository<T>{
 
-    private Util<Product> Util;
-    private static final String PRODUTOS_TXT = "produtos.txt";
+    private final FilePersistenceJson<Product> filePersistence;
+    private static final String filePath = "src/main/java/br/com/meli/desafiospring/files/products.json";
 
     /**
      * Author: David Alexandre
@@ -19,16 +21,18 @@ public class ProductRepository<T>{
      * Description: Realizar leitura do arquivo txt e organizando os campos dentro do array
      * @return
      */
-    public List<Product> lista() {
-        Util = new Util<Product>();
-        List<String> registros = Util.leitura(PRODUTOS_TXT);
-        List<Product> result = new ArrayList<Product>();
-        registros.forEach(r->{
-            String[] campos = r.split(";");
-            Product product = new Product((campos[0]), campos[1], campos[2], campos[3], campos[4], campos[5], campos[6], campos[7]);
-            result.add(product);
+    public void writeFile(List<Product> input) {
+        input.stream().forEach(p -> {
+            try {
+                filePersistence.writeToFile(p, filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
-        return result;
+    }
+
+    public List<Product> findAll(){
+        return filePersistence.readObjects(filePath,Product.class);
     }
 
 }

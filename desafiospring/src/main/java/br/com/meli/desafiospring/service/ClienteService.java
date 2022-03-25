@@ -24,7 +24,7 @@ public class ClienteService {
      */
     public List<Client> listaClientes(String name){
         List<Client> clienteList = new ArrayList<>();
-        for (Client c: repository.lista()){
+        for (Client c: repository.findAll()){
             if (c.getName().equals(name)){
                 clienteList.add(c);
             }
@@ -40,7 +40,7 @@ public class ClienteService {
      */
     public List<Client> listClient(){
         List<Client> clienteList = new ArrayList<>();
-        for (Client c: repository.lista()){
+        for (Client c: repository.findAll()){
 
             clienteList.add(c);
         }

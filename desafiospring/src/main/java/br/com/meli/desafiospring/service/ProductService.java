@@ -29,7 +29,7 @@ public class ProductService {
      */
     public List<Product> listaPorCategoriaFreeshipping(String category, String freeShipping){
         List<Product> productList = new ArrayList<>();
-        for (Product p: repository.lista()){
+        for (Product p: repository.findAll()){
             if (p.getCategory().equals(category) && (p.getFreeShipping().equals(freeShipping))){
                 productList.add(p);
             }
@@ -47,7 +47,7 @@ public class ProductService {
      */
     public List<Product> listaPorNameBrand(String name, String brand){
         List<Product> productList = new ArrayList<>();
-        for (Product p: repository.lista()){
+        for (Product p: repository.findAll()){
             if(p.getName().equals(name) && (p.getBrand().equals(brand))){
                 productList.add(p);
             }
@@ -65,7 +65,7 @@ public class ProductService {
      */
     public List<Product> listaPorPriceQuantity(String price, String quantity){
         List<Product> productList = new ArrayList<>();
-        for (Product p: repository.lista()){
+        for (Product p: repository.findAll()){
             if(p.getPrice().equals(price) && (p.getQuantity().equals(quantity))){
                 productList.add(p);
             }
@@ -83,7 +83,7 @@ public class ProductService {
      */
     public List<Product> listaPorNameCategory(String name, String category){
         List<Product> productList = new ArrayList<>();
-        for (Product p: repository.lista()){
+        for (Product p: repository.findAll()){
             if(p.getName().equals(name) && (p.getCategory().equals(category))){
                 productList.add(p);
             }
@@ -101,8 +101,8 @@ public class ProductService {
      */
     public List<Product> listaPorProductIdPrestige(String productId, String prestige){
         List<Product> productList = new ArrayList<>();
-        for (Product p: repository.lista()){
-            if(p.getProductld().equals(productId) && (p.getPrestige().equals(prestige))){
+        for (Product p: repository.findAll()){
+            if(p.getProductId().equals(productId) && (p.getPrestige().equals(prestige))){
                 productList.add(p);
             }
         }

@@ -1,0 +1,12 @@
+[{
+  "clientId": 1,
+  "name": "David",
+  "cpf": 40908043880,
+  "state": "Sao Paulo"
+},
+{
+  "clientId":2,
+  "name":"Alexandre",
+  "cpf":40908043890,
+  "state":"Rio De Janeiro"
+}]

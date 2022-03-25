@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ProductDTO {
 
-    private String productld;
+    private String productId;
     private String name;
     private String category;
     private String brand;
@@ -27,7 +27,7 @@ public class ProductDTO {
      * @return
      */
     public static List<ProductDTO> converte(List<Product> product) {
-        return product.stream().map(p -> new ProductDTO(p.getProductld(), p.getName(), p.getCategory(), p.getBrand(),
+        return product.stream().map(p -> new ProductDTO(p.getProductId(), p.getName(), p.getCategory(), p.getBrand(),
                 p.getPrice(), p.getQuantity(), p.getFreeShipping(), p.getPrestige())).collect(Collectors.toList());
     }
 }

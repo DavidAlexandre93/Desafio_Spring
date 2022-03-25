@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Client {
 
-        private String clienteId;
+        private String clientId;
         private String name;
         private String cpf;
         private String state;
@@ -23,7 +23,7 @@ public class Client {
          */
         @Override
         public String toString() {
-            return String.valueOf(clienteId).concat(";").concat(name).concat(";")
+            return String.valueOf(clientId).concat(";").concat(name).concat(";")
                     .concat(cpf).concat(";").concat(state).concat(";");
         }
 
