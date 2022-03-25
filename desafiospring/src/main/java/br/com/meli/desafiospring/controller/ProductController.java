@@ -49,11 +49,17 @@ public class ProductController {
         List<Product> soldProducts = productService.sellProducts(shoppingCart);
         return ResponseEntity.ok(soldProducts);
     }
+
     @GetMapping("/api/v1/articles/category")
     public ResponseEntity <List<Product>> getProductsByCategory(@RequestParam String category){
         List<Product> categories = productService.getProductsByCategory(category);
 
         return ResponseEntity.ok(categories);
+    }
+
+    @GetMapping("/articles/all")
+    public List<?> getAllProducts() {
+        return productService.getAllProducts();
     }
 
 }
