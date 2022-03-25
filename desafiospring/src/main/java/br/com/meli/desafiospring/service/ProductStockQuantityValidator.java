@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 public class ProductStockQuantityValidator implements  ShoppingCartValidator{
 
     /**
-     * Validador responsavel por garantir que a quantidade de um tipo de produto presente no carrinho de compras
+     * Author:
+     * Method:
+     * Description: Validador responsavel por garantir que a quantidade de um tipo de produto presente no carrinho de compras
      * seja menor ou igual a quantidade presente no estoque;
      *
      * @param stockProduct produto presente na lista de produtos cadastrados na aplicação;

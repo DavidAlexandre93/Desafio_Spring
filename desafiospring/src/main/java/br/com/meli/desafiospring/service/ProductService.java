@@ -28,7 +28,9 @@ public class ProductService {
 
 
     /**
-     * Comparador utilizado no processo de filtragem da lista de produtos existentes correspondentes aos requisitos:
+     * Author: Maik Henrique e Matheus Guerra
+     * Method:
+     * Description: Comparador utilizado no processo de filtragem da lista de produtos existentes correspondentes aos requisitos:
      * R005, R006, R007;
      */
     private static Function<Integer, Comparator<Product>> p = orderBy -> (Comparator<Product>) (o1, o2) -> {
@@ -49,7 +51,9 @@ public class ProductService {
 
 
     /**
-     * Service responsavel pela criação e cadastro de produtos na lista de produtos existentes;
+     * Author:
+     * Method:
+     * Description: Service responsavel pela criação e cadastro de produtos na lista de produtos existentes;
      *
      * @param input Entrada com lista de objetos seguindo os atribuitos da Class Product no formato JSON;
      *
@@ -62,7 +66,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel por filtras a lista de produtos em função dos parametros informados pelo usuario;
+     * Author: Maik Henrique e Matheus Guerra
+     * Method:
+     * Description: Serviço responsavel por filtras a lista de produtos em função dos parametros informados pelo usuario;
      *
      * @param category atributo de Product usada no processo de filtragem;
      * @param freeShipping atributo de Product usada no processo de filtragem;
@@ -80,7 +86,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel pela
+     * Author:
+     * Method:
+     * Description: Serviço responsavel pelo processo de venda na aplicação
      *
      * @param shoppingCart representa lista de produtos que estao na requisiçao de compra;
      *
@@ -97,7 +105,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel pelo processo de busca de produtos de uma lista de compras, atualização dos valores de
+     * Author:
+     * Method:
+     * Description: Serviço responsavel pelo processo de busca de produtos de uma lista de compras, atualização dos valores de
      * estoque para cada tipo de produto presente na lista de compras e validação da compra;
      *
      * @param shoppingCart lista de compras apos os processos de validação;
@@ -119,7 +129,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel por atualizar a quantidade de um tipo de produto cadastrado apos uma venda;
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por atualizar a quantidade de um tipo de produto cadastrado apos uma venda;
      *
      * @param product tipo de produto a ter a sua quantidade atualizada;
      * @param newProductQuantity nova quantidade de produtos disponivel no sistema;
@@ -135,7 +147,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço que calcula o preço total de uma requisição de venda;
+     * Author:
+     * Method:
+     * Description: Serviço que calcula o preço total de uma requisição de venda;
      *
      * @param products lista de produtos presentes no carrinho de compras;
      * @return valor total da compra requisitada;
@@ -146,7 +160,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
      *
      * @return lista de produtos cadastrados;
      */
@@ -155,7 +171,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel por retornar lista de produtos cadastrados na aplicação apos filtragem por categoria;
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por retornar lista de produtos cadastrados na aplicação apos filtragem por categoria;
      *
      * @param category atributo de Product usada no processo de filtragem;
      *
@@ -174,7 +192,9 @@ public class ProductService {
     }
 
     /**
-     * Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
      *
      * @return lista de produtos cadastrados;
      */

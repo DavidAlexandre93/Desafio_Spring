@@ -25,7 +25,9 @@ public class ClientController {
 
 
     /**
-     * Responsavel pela operação POST que cadastra novo cliente na aplicação;
+     * Author:
+     * Method: End Point Request Param
+     * Description: Responsavel pela operação POST que cadastra novo cliente na aplicação;
      *
      * @param input Objeto correspondente a validação de um cliente a ser cadastrado;
      *

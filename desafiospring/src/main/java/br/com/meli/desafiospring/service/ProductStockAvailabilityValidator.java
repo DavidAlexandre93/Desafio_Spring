@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 public class ProductStockAvailabilityValidator implements ShoppingCartValidator {
 
     /**
-     * Validador responsavel por garantir que existe pelo menos uma unidade de um tipo de produto cadastrado;
+     * Author:
+     * Method:
+     * Description: Validador responsavel por garantir que existe pelo menos uma unidade de um tipo de produto cadastrado;
      * Utilizado no processo de validação de uma compra;
      *
      * @param stockProduct produto presente na lista de produtos cadastrados na aplicação;

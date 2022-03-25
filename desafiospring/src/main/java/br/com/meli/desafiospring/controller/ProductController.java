@@ -31,8 +31,10 @@ public class ProductController {
 
 
     /**
-     * Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados.
-     * É possivel adicionar filtros
+     * Author:
+     * Method: End Point Request Param
+     * Description: Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados;
+     * É possivel realizar processos de filtragem na lista de produtos em função dos parametros passados;
      *
      * @param category   atributo de Product usada no processo de filtragem;
      * @param freeShipping   atributo de Product usada no processo de filtragem;
@@ -57,7 +59,9 @@ public class ProductController {
     }
 
     /**
-     * Responsavel pela operação POST que cadastra novos produtos na aplicação;
+     * Author:
+     * Method:
+     * Description: Responsavel pela operação POST que cadastra novos produtos na aplicação;
      *
      * @param input Entrada com lista de objetos seguindo os atribuitos da Class Product no formato JSON;
      *
@@ -72,7 +76,9 @@ public class ProductController {
     }
 
     /**
-     * Responsavel pela operação POST que faz uma requisição de compra na aplicação;
+     * Author:
+     * Method:
+     * Description: Responsavel pela operação POST que faz uma requisição de compra na aplicação;
      *
      * @param purchaseRequestDTO Lista de objetos do tipo Product correspondentes a lista de compra;
      *
@@ -87,7 +93,10 @@ public class ProductController {
     }
 
     /**
-     * Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados, filtrados por categoria.
+     * Author:
+     * Method:
+     * Description: Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados,
+     *              filtrados por categoria.
      *
      * @param category Categoria de produto usada no processo de filtragem;
      *
@@ -101,7 +110,9 @@ public class ProductController {
     }
 
     /**
-     * Responsavel pelo operação GET que retorna uma lista com todos os produtos cadastrados.
+     * Author:
+     * Method:
+     * Description: Responsavel pelo operação GET que retorna uma lista com todos os produtos cadastrados.
      *
      * @return Lista com todos os produtos cadastrados
      */
