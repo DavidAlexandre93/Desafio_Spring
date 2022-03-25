@@ -8,6 +8,6 @@ import java.util.List;
 @Component
 public interface FilePersistenceUtil<T> {
     void writeToFile(T object, String filePath) throws IOException;
-
     List<T> readObjects(String filePath, Class<T> javaType);
+    boolean updateElement(String filePath, T oldElement, T newElement, Class<T> javaType);
 }

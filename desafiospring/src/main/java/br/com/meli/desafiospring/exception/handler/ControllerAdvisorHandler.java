@@ -1,6 +1,7 @@
 package br.com.meli.desafiospring.exception.handler;
 import br.com.meli.desafiospring.dto.ExceptionPayloadDTO;
 import br.com.meli.desafiospring.exception.ClientRegisteredException;
+import br.com.meli.desafiospring.exception.OutOfStockException;
 import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
 import br.com.meli.desafiospring.exception.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -60,6 +61,14 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
                 .title("Fieldset validation error")
                 .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
                 .description(ex.getMessage())
+          
+    @ExceptionHandler(value = {OutOfStockException.class})
+    protected ResponseEntity<Object> handleProductDoesNotExistsException(OutOfStockException exception) {
+        ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
+                .timestamp(LocalDateTime.now())
+                .title("Product out of stock")
+                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value())
+                .description(exception.getMessage())
                 .build();
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
