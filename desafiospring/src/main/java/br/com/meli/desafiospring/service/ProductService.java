@@ -2,16 +2,11 @@ package br.com.meli.desafiospring.service;
 
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import br.com.meli.desafiospring.dto.InputDTO;
+import br.com.meli.desafiospring.dto.ArticlesDTO;
 import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
-import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ShoppingCart;
 import br.com.meli.desafiospring.enums.ProductOrderByEnum;
-import br.com.meli.desafiospring.exception.ProductDoesNotExistsException;
-import br.com.meli.desafiospring.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
-import br.com.meli.desafiospring.repository.ProductRepository;
 
 import java.util.*;
 import java.util.function.Function;
@@ -24,10 +19,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductService {
 
-    @Autowired
-    private final ProductRepository productRepository;
 
-    public List<ProductPurchaseRequestDTO> createProducts(InputDTO input) {
+    private final ProductRepository productRepository;
+    private final List<ShoppingCartValidator> shoppingCartValidators;
+
+    public List<ProductPurchaseRequestDTO> createProducts(ArticlesDTO input) {
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
         return newProducts.stream().map(a -> new ProductPurchaseRequestDTO().convert(a)).collect(Collectors.toList());
@@ -39,17 +35,25 @@ public class ProductService {
 
     public List<Product> sellProducts(ShoppingCart shoppingCart) {
         Map<Long, Product> idToProductMap = productRepository.findAll().stream()
-                .collect(Collectors.toMap(Product::getProductId, Function.identity(), (r1, r2) -> r1));
+                .collect(Collectors.toMap(Product::getProductId, Function.identity(), (r1, r2) -> r2));
 
-        return shoppingCart.getArticlesPurchaseRequest().stream().map(shopppingCartProduct -> {
-            long targetProductId = shopppingCartProduct.getProductId();
-            Product product = idToProductMap.get(shopppingCartProduct.getProductId());
-            if (product == null) {
-                throw new ProductDoesNotExistsException(String.format("Product of id %d wasn't found.", targetProductId));
-            }
+        return shoppingCart.getArticlesPurchaseRequest().stream().map(shoppingCartProduct -> {
+            Product product = idToProductMap.get(shoppingCartProduct.getProductId());
+            shoppingCartValidators.stream().forEachOrdered(validator -> validator.validate(product, shoppingCartProduct));
+            int newProductQuantity = product.getQuantity() - shoppingCartProduct.getQuantity();
+            updateProductQuantity(product, newProductQuantity);
             return product;
-
         }).collect(Collectors.toList());
+    }
+
+    private void updateProductQuantity(Product product, int newProductQuantity) {
+        try {
+            Product newProduct = (Product) product.clone();
+            newProduct.setQuantity(newProductQuantity);
+            productRepository.updateProduct(product, newProduct);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -1,7 +1,7 @@
 package br.com.meli.desafiospring.controller;
 
-import br.com.meli.desafiospring.dto.InputDTO;
-import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
+import br.com.meli.desafiospring.dto.ArticlesDTO;
+
 import br.com.meli.desafiospring.dto.PurchaseRequestDTO;
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.entity.ShoppingCart;
@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+
 import java.util.*;
 
 @RestController
@@ -34,14 +35,12 @@ public class ProductController {
         if (category == null && freeShipping == null && order == null) {
             return productService.findAll();
         } else {
-            ProductService.p.apply(order);
             return productService.findByCriteria(category, freeShipping, order);
         }
-
     }
 
     @PostMapping("/insert-articles-request")
-    public ResponseEntity<?> postProducts(@RequestBody InputDTO input) {
+    public ResponseEntity<?> postProducts(@RequestBody ArticlesDTO input) {
         try {
             return ResponseEntity.ok(productService.createProducts(input));
 

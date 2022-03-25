@@ -1,7 +1,9 @@
 package br.com.meli.desafiospring.exception;
 
-public class ProductDoesNotExistsException extends RuntimeException {
-    private static final long serialVersionUID = -4870885287350391097L;
+import java.io.Serializable;
+
+public class ProductDoesNotExistsException extends RuntimeException implements Serializable {
+    private static final long serialVersionUID = -43123135543453553L;
 
     public ProductDoesNotExistsException(String message) {
         super(message);
