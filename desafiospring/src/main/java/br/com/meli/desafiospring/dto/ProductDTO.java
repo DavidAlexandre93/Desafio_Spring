@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ProductDTO {
 
-    private String productId;
+    private Long productId;
     private String name;
     private String category;
     private String brand;
@@ -26,8 +26,8 @@ public class ProductDTO {
      * @param product
      * @return
      */
-    public static List<ProductDTO> converte(List<Product> product) {
-        return product.stream().map(p -> new ProductDTO(p.getProductId(), p.getName(), p.getCategory(), p.getBrand(),
+    public static List<br.com.meli.desafiospring.dto.ProductDTO> converte(List<Product> product) {
+        return product.stream().map(p -> new br.com.meli.desafiospring.dto.ProductDTO(p.getProductId(), p.getName(), p.getCategory(), p.getBrand(),
                 p.getPrice(), p.getQuantity(), p.getFreeShipping(), p.getPrestige())).collect(Collectors.toList());
     }
 }

@@ -1,13 +1,15 @@
 package br.com.meli.desafiospring.entity;
 
 import lombok.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Product implements Cloneable {
 
-   private String productId;
+   private Long productId;
    private String name;
    private String category;
    private String brand;
@@ -15,6 +17,24 @@ public class Product {
    private String quantity;
    private String freeShipping;
    private String prestige;
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Product product = (Product) o;
+      return Objects.equals(productId, product.productId);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(productId);
+   }
+
+   @Override
+   public Object clone() throws CloneNotSupportedException {
+      return super.clone();
+   }
 
    /**
     * Author: David Alexandre
@@ -28,6 +48,4 @@ public class Product {
               .concat(category).concat(";").concat(brand).concat(";").concat(String.valueOf(price).concat(";").concat(String.valueOf(quantity).concat(";"))
                       .concat(String.valueOf(freeShipping).concat(";")).concat(prestige).concat(";"));
    }
-
-
 }

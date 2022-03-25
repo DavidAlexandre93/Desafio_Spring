@@ -6,28 +6,24 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Client {
+    private Integer id;
+    private String name;
+    private String cpf;
+    private String state;
 
-        private String clientId;
-        private String name;
-        private String cpf;
-        private String state;
+    /**
+     * Author: David Alexandre
+     * Method: Entity com os dados Cliente
+     * Description: Concatenar os dados Entity com ";", retornando valueof String de todos
+     * @return
+     */
 
-        /**
-         * Author: David Alexandre
-         * Method: Entity com os dados Cliente
-         * Description: Concatenar os dados Entity com ";", retornando valueof String de todos
-         * @return
-         */
-        @Override
-        public String toString() {
-            return String.valueOf(clientId).concat(";").concat(name).concat(";")
-                    .concat(cpf).concat(";").concat(state).concat(";");
-        }
-
-
-
-
+    @Override
+    public String toString() {
+        return String.valueOf(id).concat(";").concat(name).concat(";")
+                .concat(cpf).concat(";").concat(state).concat(";");
+    }
 }
