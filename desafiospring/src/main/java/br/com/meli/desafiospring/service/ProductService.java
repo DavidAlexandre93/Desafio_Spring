@@ -178,13 +178,10 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
-     * Description: Serviço responsavel por retornar lista de produtos cadastrados na aplicação apos filtragem por categoria;
-     *
-     * @param category atributo de Product usada no processo de filtragem;
-     *
-     * @return lista de produtos resultantes da filtragem usando a categoria selecionada;
+     * Author: Mariana Galdino
+     * Method: retorno de lista
+     * Description: leitura da lista de produtos e filtra por categoria
+     * @return
      */
     public List<Product> getProductsByCategory(String category) {
 

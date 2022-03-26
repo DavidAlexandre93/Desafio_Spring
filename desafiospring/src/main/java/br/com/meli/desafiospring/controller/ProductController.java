@@ -95,14 +95,10 @@ public class ProductController {
     }
 
     /**
-     * Author:
-     * Method:
-     * Description: Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados,
-     *              filtrados por categoria.
-     *
-     * @param category Atributo da Class Product usada no processo de filtragem;
-     *
-     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por categoria;
+     * Author: Mariana Galdino
+     * Method: End Point
+     * Description: listar todos os clientes filtrados por categoria
+     * @return
      */
     @GetMapping("/articles/category")
     public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam String category) {
@@ -134,9 +130,10 @@ public class ProductController {
      *
      * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por categoria;
      */
-    @GetMapping("/articles/")
-    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category, @RequestParam Boolean freeShipping) {
-        List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category, freeShipping));
+    @GetMapping("/articles/listcategoryfreeshipping")
+    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category,
+                                                                        @RequestParam Boolean freeShipping) {
+        List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category,freeShipping));
         return ResponseEntity.ok(result);
     }
 

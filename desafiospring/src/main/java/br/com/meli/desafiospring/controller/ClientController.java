@@ -55,16 +55,11 @@ public class ClientController {
         }
     }
 
-
     /**
-     * Author: Bruno Mendes
-     * Method: End Point Get
-     *
-     * Description: lista todos os clientes apos processo de filtragem em relacao ao atributo state;
-     *
-     * @param state parametro seguindo o atributo da Class Client usado no processo de filtragem;
-     *
-     * @return Retorna lista de clientes filtrados em relacao ao estado escolhido;
+     * Author: Mariana Galdino
+     * Method: End Point
+     * Description: listar todos os clientes filtrados por estado
+     * @return
      */
     @GetMapping("/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state) {

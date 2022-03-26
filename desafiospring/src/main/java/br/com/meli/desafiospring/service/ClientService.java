@@ -46,13 +46,10 @@ public class ClientService {
     }
 
     /**
-     * Author:
-     * Method: Retornar a lista de cliente
-     * Description: Realizar a leitura da lista e retornar todos os clientes filtrados pelo atributo state
-     *
-     * @param state Atributo da Class Client usada no processo de filtragem;
-     *
-     * @return Lista de objetos do tipo Client cadastrados filtrados por estado;
+     * Author: Mariana Galdino
+     * Method: retorna lista de clientes filtrados
+     * Description: leitura da list de clientes e retorna filtrados pelo estado
+     * @return
      */
     public List<Client> getClientsByState(String state){
 
