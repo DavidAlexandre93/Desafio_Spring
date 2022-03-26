@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "73349156-e81c-45dd-9cf1-c2a662faa98e",
+		"name": "R005/R006/R007",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ordem alfabética crescente",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Ordem alfabética decrescente",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Ordem do maior a menor preço",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Ordem do menor a maior preço",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles?category=categoryName&freeShipping=true&order=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "categoryName"
+						},
+						{
+							"key": "freeShipping",
+							"value": "true"
+						},
+						{
+							"key": "order",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

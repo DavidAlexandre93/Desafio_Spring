@@ -31,10 +31,15 @@ public class ClientController {
 
     private final ClientService clientService;
 
+
     /**
      * Author: Bruno Mendes
-     * Method: End point post new client
-     * Description: cria um novo cliente e valida os campos de imput
+     * Method: End Point Request Param
+     * Description: Responsavel pela operação POST que cadastra e valida novo cliente na aplicação;
+     *
+     * @param input Objeto correspondente a validação de um cliente a ser cadastrado;
+     *
+     * @return Mensagem de confirmação ou não de cadastro de cliente;
      */
 
     @PostMapping("/insert-client")
@@ -50,6 +55,17 @@ public class ClientController {
         }
     }
 
+
+    /**
+     * Author: Bruno Mendes
+     * Method: End Point Get
+     *
+     * Description: lista todos os clientes apos processo de filtragem em relacao ao atributo state;
+     *
+     * @param state parametro seguindo o atributo da Class Client usado no processo de filtragem;
+     *
+     * @return Retorna lista de clientes filtrados em relacao ao estado escolhido;
+     */
     @GetMapping("/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state) {
 
@@ -60,8 +76,9 @@ public class ClientController {
     /**
      * Author: David Alexandre
      * Method: End Point
-     * Description: listar todos os clientes
-     * @return
+     * Description: listar todos os clientes;
+     *
+     * @return Lista com todos os clientes mais codigo de confirmaçao de operacao;
      */
     @GetMapping("/articles/list-client")
     public ResponseEntity<List<ClienteDTO>> listarClientes() {

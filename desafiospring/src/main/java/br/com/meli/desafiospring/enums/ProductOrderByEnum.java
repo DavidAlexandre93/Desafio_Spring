@@ -1,7 +1,8 @@
 package br.com.meli.desafiospring.enums;
 
 /**
- *  R005, R006, R007
+ *  Enum utilizado no processo de filtragem por ordem alfabetica ou por preço;
+ *  Utilizado nos requisitos R005, R006, R007;
  */
 public enum ProductOrderByEnum {
     NAME_ASC(0),
