@@ -42,7 +42,12 @@ public class ClientService {
             }
         }
     }
-
+    /**
+     * Author: Mariana Galdino
+     * Method: retorna lista de clientes filtrados
+     * Description: leitura da list de clientes e retorna filtrados pelo estado
+     * @return
+     */
     public List<Client> getClientsByState(String state){
 
         List<Client> clientByState = clientRepository.findAll();

@@ -49,7 +49,12 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
-
+    /**
+     * Author: Mariana Galdino
+     * Method: End Point
+     * Description: listar todos os clientes filtrados por estado
+     * @return
+     */
     @GetMapping("/articles/client/state") // metodo para filtrar por estado
     public ResponseEntity<List<Client>> getClientsByState(@RequestParam String state) {
 

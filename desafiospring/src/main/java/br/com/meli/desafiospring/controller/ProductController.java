@@ -63,7 +63,12 @@ public class ProductController {
         ShoppingCart result = productService.sellProducts(shoppingCart);
         return ResponseEntity.ok(result);
     }
-
+    /**
+     * Author: Mariana Galdino
+     * Method: End Point
+     * Description: listar todos os clientes filtrados por categoria
+     * @return
+     */
     @GetMapping("/articles/category")
     public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam String category) {
         List<Product> categories = productService.getProductsByCategory(category);
