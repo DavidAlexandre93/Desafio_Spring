@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "b37b6ef2-2e0d-4fdd-8c58-ef782f57d63b",
+		"name": "bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "filtro_categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/category?category=Ferramentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"category"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Ferramentas"
+						}
+					]
+				},
+				"description": "metodo filtrar por categoria"
+			},
+			"response": []
+		},
+		{
+			"name": "filtro_cliente_estado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/client/state?state=sao paulo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"client",
+						"state"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "sao paulo"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
