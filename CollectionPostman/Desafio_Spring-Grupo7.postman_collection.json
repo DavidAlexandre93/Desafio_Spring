@@ -1,12 +1,12 @@
 {
 	"info": {
 		"_postman_id": "c7a71471-afc2-45b7-ab25-21da20a24035",
-		"name": "DesafioSpringBoot",
+		"name": "Desafio_Spring-Grupo7",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "R004",
+			"name": "R004-FilterByCategoryFreeshipping-True",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -30,7 +30,7 @@
 			"response": []
 		},
 		{
-			"name": "R004",
+			"name": "R004-FilterByCategoryFreeshipping-False",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -54,7 +54,7 @@
 			"response": []
 		},
 		{
-			"name": "R004",
+			"name": "R004-FilterByNameBrand",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -78,7 +78,7 @@
 			"response": []
 		},
 		{
-			"name": "R004",
+			"name": "R004-FilterByPriceQuantity",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -102,7 +102,7 @@
 			"response": []
 		},
 		{
-			"name": "R004",
+			"name": "R004-FilterByNameCategory",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -126,7 +126,7 @@
 			"response": []
 		},
 		{
-			"name": "R004",
+			"name": "R004-FilterByProductPrestige",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -150,7 +150,7 @@
 			"response": []
 		},
 		{
-			"name": "R012",
+			"name": "R012-FilterAllClients",
 			"request": {
 				"method": "GET",
 				"header": [],

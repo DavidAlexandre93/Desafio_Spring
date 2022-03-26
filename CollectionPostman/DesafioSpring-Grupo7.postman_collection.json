@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "bab838f4-9040-442b-979f-8b850071a687",
-		"name": "Desafio_Spring",
+		"_postman_id": "f11ae712-e745-4198-80e3-ed1fc45fbc52",
+		"name": "DesafioSpring-Grupo7",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -93,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "R005 - Alfabeto Crescente",
+			"name": "R005-Alfabeto Crescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -131,7 +131,7 @@
 			"response": []
 		},
 		{
-			"name": "R005 - Alfabeto Decrescente",
+			"name": "R005-Alfabeto Decrescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -169,7 +169,7 @@
 			"response": []
 		},
 		{
-			"name": "R006 - Preço decrescente",
+			"name": "R006-Preço decrescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -207,7 +207,7 @@
 			"response": []
 		},
 		{
-			"name": "R007 - Preço crescente",
+			"name": "R007-Preço crescente",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

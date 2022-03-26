@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "b37b6ef2-2e0d-4fdd-8c58-ef782f57d63b",
-		"name": "bootcamp",
+		"_postman_id": "4f598a5f-3d73-4ed5-9698-7cda1c40ffbb",
+		"name": "Desafio_SpringGrupo7",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "filtro_categoria",
+			"name": "R003-FilterByCategory",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "filtro_cliente_estado",
+			"name": "R013-FilterByClientState",
 			"request": {
 				"method": "GET",
 				"header": [],
