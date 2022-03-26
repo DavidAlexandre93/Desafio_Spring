@@ -83,7 +83,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/articles/pricequantity/R$183/4",
+					"raw": "http://localhost:8080/api/v1/articles/pricequantity/183/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -94,7 +94,7 @@
 						"v1",
 						"articles",
 						"pricequantity",
-						"R$183",
+						"183",
 						"4"
 					]
 				}
@@ -155,7 +155,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/articles/client",
+					"raw": "http://localhost:8080/api/v2/articles/list-client",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -163,9 +163,9 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"articles",
-						"client"
+						"list-client"
 					]
 				}
 			},
