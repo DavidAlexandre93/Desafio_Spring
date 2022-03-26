@@ -52,6 +52,11 @@ public class ProductService {
         return result;
     };
 
+    /**
+     * Author: Bruno Mendes
+     * Method: Metodo para criar novos produtos
+     * Description: Recebe lista de produtos com campos validados, e envia para repository
+     */
 
     public List<Product> createProducts(ArticlesDTO input) {
   

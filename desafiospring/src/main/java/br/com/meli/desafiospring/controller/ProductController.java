@@ -44,6 +44,11 @@ public class ProductController {
         }
     }
 
+    /**
+     * Author: Bruno Mendes
+     * Method: End point post new Product
+     * Description: Cria novos produtos recebendo uma lista de produtos
+     */
     @PostMapping("/insert-articles-request")
     public ResponseEntity<?> postProducts(@Valid @RequestBody ArticlesDTO input) {
         List<Product> products = productService.createProducts(input);
