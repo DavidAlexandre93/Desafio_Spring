@@ -16,6 +16,12 @@ public class ClientRepository {
 
     private static final String filePath = "src/main/java/br/com/meli/desafiospring/files/clients.json";
 
+    /**
+     * Author: Bruno Mendes
+     * Method: Metodo para salvar novos clientes
+     * Description: Recebe a informação de um novo cliente envia para a função do arquivo de salvar
+     */
+
     public void writeFile(Client input) {
         try {
             filePersistence.writeToFile(input, filePath);

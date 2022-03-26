@@ -16,6 +16,12 @@ public class ClientService {
 
     ClientRepository clientRepository;
 
+    /**
+     * Author: Bruno Mendes
+     * Method: Metodo para criar novos clientes
+     * Description: Recebe novo cliente com campos validados, verifica se ja existe e se não existr envia para repository
+     */
+
     public void createClient(Client input) {
         List<Client> existingClients = clientRepository.findAll();
         AtomicReference<Boolean> exist = new AtomicReference<>(false);

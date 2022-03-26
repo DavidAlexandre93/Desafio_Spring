@@ -18,6 +18,12 @@ public class ProductRepository {
     private static final String FILE_PATH = "src/main/java/br/com/meli/desafiospring/files/products.json";
     private final FilePersistenceUtil<Product> filePersistence;
 
+    /**
+     * Author: Bruno Mendes
+     * Method: Metodo para salvar novos produtos
+     * Description: Recebe uma lista de novos produtos e envia para a função do arquivo de salvar
+     */
+
     public void writeFile(List<Product> input) {
         Map<Long, Product> productsMap = getProductsMap();
         input.forEach(i -> {
