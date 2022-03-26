@@ -1,1 +1,15 @@
-[{"id":1,"name":"bruno","cpf":"36472201838","state":"Bahia"},{"id":11,"name":"João gonzález","cpf":"39838419885","state":"Pernambuco"}]
+
+[
+  {
+    "id": 1,
+    "name": "David",
+    "cpf": 40908043880,
+    "state": "Sao Paulo"
+  },
+  {
+    "id": 2,
+    "name": "Alexandre",
+    "cpf": 40908043890,
+    "state": "Rio de Janeiro"
+  }
+]

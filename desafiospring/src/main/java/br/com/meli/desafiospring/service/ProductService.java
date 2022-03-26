@@ -1,5 +1,12 @@
 package br.com.meli.desafiospring.service;
 
+import br.com.meli.desafiospring.entity.Product;
+import br.com.meli.desafiospring.repository.ProductRepository;
+import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 import br.com.meli.desafiospring.dto.ArticlesDTO;
 import br.com.meli.desafiospring.dto.ProductPurchaseRequestDTO;
 import br.com.meli.desafiospring.entity.Product;
@@ -115,6 +122,100 @@ public class ProductService {
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param category
+     * @param freeShipping
+     * @return
+     */
+    public List<Product> listaPorCategoriaFreeshipping(String category, Boolean freeShipping){
+        List<Product> productList = new ArrayList<>();
+        for (Product p: productRepository.findAll()){
+            if (p.getCategory().equals(category) && (p.getFreeShipping().equals(freeShipping))){
+                productList.add(p);
+            }
+        }
+        return productList;
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param name
+     * @param brand
+     * @return
+     */
+    public List<Product> listaPorNameBrand(String name, String brand){
+        List<Product> productList = new ArrayList<>();
+        for (Product p: productRepository.findAll()){
+            if(p.getName().equals(name) && (p.getBrand().equals(brand))){
+                productList.add(p);
+            }
+        }
+        return productList;
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param price
+     * @param quantity
+     * @return
+     */
+    public List<Product> listaPorPriceQuantity(BigDecimal price, Integer quantity){
+        List<Product> productList = new ArrayList<>();
+        for (Product p: productRepository.findAll()){
+
+            //String convertToString = p.getPrice().toString().valueOf(price);
+
+            if(p.getPrice().equals(price) && (p.getQuantity().equals(quantity))){
+                productList.add(p);
+            }
+        }
+        return productList;
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param name
+     * @param category
+     * @return
+     */
+    public List<Product> listaPorNameCategory(String name, String category){
+        List<Product> productList = new ArrayList<>();
+        for (Product p: productRepository.findAll()){
+            if(p.getName().equals(name) && (p.getCategory().equals(category))){
+                productList.add(p);
+            }
+        }
+        return productList;
+    }
+
+    /**
+     * Author: David Alexandre
+     * Method: Retornar somente o dado buscado na lista de produtos
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
+     * @param productId
+     * @param prestige
+     * @return
+     */
+    public List<Product> listaPorProductIdPrestige(Long productId, String prestige){
+        List<Product> productList = new ArrayList<>();
+        for (Product p: productRepository.findAll()){
+
+            if(p.getProductId().equals(productId) && (p.getPrestige().equals(prestige))){
+                productList.add(p);
+            }
+        }
+        return productList;
     }
 }
 

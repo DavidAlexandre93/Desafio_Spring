@@ -1,13 +1,12 @@
 package br.com.meli.desafiospring.repository;
 
 import br.com.meli.desafiospring.entity.Product;
-import br.com.meli.desafiospring.exception.DuplicatedResourceException;
-import br.com.meli.desafiospring.util.FilePersistenceUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-
 import java.io.IOException;
 import java.util.List;
+import br.com.meli.desafiospring.exception.DuplicatedResourceException;
+import br.com.meli.desafiospring.util.FilePersistenceUtil;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -25,7 +24,6 @@ public class ProductRepository {
             if (productsMap.containsKey(i.getProductId()))
                 throw new DuplicatedResourceException(String.format("Product of %d is already registered", i.getProductId()));
         });
-
         input.forEach(p -> {
             try {
                 filePersistence.writeToFile(p, FILE_PATH);
