@@ -86,9 +86,10 @@ public class ProductController {
      * @param freeShipping
      * @return
      */
-    @GetMapping("/articles/")
-    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category, @RequestParam Boolean freeShipping) {
-        List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category, freeShipping));
+    @GetMapping("/articles/listcategoryfreeshipping")
+    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category,
+                                                                        @RequestParam Boolean freeShipping) {
+        List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category,freeShipping));
         return ResponseEntity.ok(result);
     }
 
