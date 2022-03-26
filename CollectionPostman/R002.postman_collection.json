@@ -1,15 +1,29 @@
 {
 	"info": {
-		"_postman_id": "91df25da-f0ee-4419-8995-533d5b80b2fc",
+		"_postman_id": "c8e37a90-81d2-430f-9719-a948f32ced14",
 		"name": "R002",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "R002",
+			"name": "R002-FilterAllProducts",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"all"
+					]
+				}
 			},
 			"response": []
 		}
