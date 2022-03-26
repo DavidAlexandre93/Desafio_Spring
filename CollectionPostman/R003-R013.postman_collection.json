@@ -40,7 +40,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/articles/client/state?state=sao paulo",
+					"raw": "http://localhost:8080/api/v2/articles/client/state?state=Pernambuco",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -48,7 +48,7 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"articles",
 						"client",
 						"state"
@@ -56,7 +56,7 @@
 					"query": [
 						{
 							"key": "state",
-							"value": "sao paulo"
+							"value": "Pernambuco"
 						}
 					]
 				}

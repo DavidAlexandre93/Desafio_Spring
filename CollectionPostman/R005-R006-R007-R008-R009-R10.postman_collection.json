@@ -6,13 +6,13 @@
 	},
 	"item": [
 		{
-			"name": "R08-R09-R10-Sucess",
+			"name": "R008-R10-TotalPurchase",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \"articlesPurchaseRequest\":[\n      {\n         \"productId\":32,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":3\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":1\n       }\n     ]\n}\n",
+					"raw": "{\n   \"articlesPurchaseRequest\":[\n      {\n         \"productId\":3,\n         \"name\":\"Soldadora\",\n         \"brand\":\"Black & Decker\",\n         \"quantity\":1\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":1\n       }\n     ]\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "R08-R09-R10-ProductNotFound",
+			"name": "R08-ProductNotFound",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -64,7 +64,7 @@
 			"response": []
 		},
 		{
-			"name": "R08-R09-R10-OutOfStock",
+			"name": "R09-OutOfStock",
 			"request": {
 				"method": "POST",
 				"header": [],

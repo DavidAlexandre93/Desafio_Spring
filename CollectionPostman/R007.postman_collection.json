@@ -1,43 +1,10 @@
 {
 	"info": {
 		"_postman_id": "51ad85b4-5cf0-44f3-ad59-76b988513d13",
-		"name": "R005-R006-R007",
+		"name": "R007",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "R005-Ordem alfabética crescente",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "R005-Ordem alfabética decrescente",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "R006-Ordem do maior a menor preço",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "R007-Ordem do menor a maior preço",
 			"request": {
