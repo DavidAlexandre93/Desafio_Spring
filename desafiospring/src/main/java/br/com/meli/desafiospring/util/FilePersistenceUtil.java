@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
+/**
+ * @Metodo: Escrever no filepath e Atualizar
+ */
 public interface FilePersistenceUtil<T> {
     void writeToFile(T object, String filePath) throws IOException;
     List<T> readObjects(String filePath, Class<T> javaType);

@@ -13,6 +13,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.time.LocalDateTime;
 
+/**
+ * @Metodo: Validar "Resource not found" na resposta do body
+ * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+ */
 @RestControllerAdvice
 public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {ResourceNotFoundException.class})
@@ -27,6 +31,12 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionPayload, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * @Metodo: Validar "Product not found" na resposta do body
+     * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = {ProductDoesNotExistsException.class})
     protected ResponseEntity<Object> handleProductDoesNotExistsException(ProductDoesNotExistsException exception) {
         ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
@@ -39,6 +49,12 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
+    /**
+     * @Metodo: Validar "Client Already Registered" na resposta do body
+     * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = {ClientRegisteredException.class})
     protected ResponseEntity<Object> handleClientRegisteredException(ClientRegisteredException exception) {
         ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
@@ -51,7 +67,15 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionPayload, HttpStatus.CONFLICT);
     }
 
-
+    /**
+     * @Metodo: Validar "Fieldset validation error" na resposta do body
+     * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+     * @param ex
+     * @param headers
+     * @param status
+     * @param request
+     * @return
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
@@ -63,7 +87,15 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(exceptionPayload, HttpStatus.UNPROCESSABLE_ENTITY);
     }
-          
+
+    /**
+     *
+     * @Metodo: Validar "Product out of stock" na resposta do body
+     * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+     *
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = {OutOfStockException.class})
     protected ResponseEntity<Object> handleProductDoesNotExistsException(OutOfStockException exception) {
         ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()
@@ -77,6 +109,12 @@ public class ControllerAdvisorHandler extends ResponseEntityExceptionHandler {
     }
 
 
+    /**
+     * @Metodo: Validar "Duplicated resource" na resposta do body
+     * @Description: Ao enviar as requicoes no body realizar as determinadas validacoes na request
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = {DuplicatedResourceException.class})
     protected ResponseEntity<Object> handleDuplicatedResourceException(DuplicatedResourceException exception) {
         ExceptionPayloadDTO exceptionPayload = ExceptionPayloadDTO.builder()

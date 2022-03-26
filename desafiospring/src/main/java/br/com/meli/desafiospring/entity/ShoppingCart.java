@@ -12,6 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+/**
+ *
+ * Method: Carrinho de compras
+ * Description: Listar valor de produtos carrinho de compras
+ *
+ */
+
 public class ShoppingCart {
     private List<Product> articlesPurchaseRequest;
     private BigDecimal total;

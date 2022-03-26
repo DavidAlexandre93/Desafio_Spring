@@ -30,7 +30,7 @@ public class ProductController {
     private final ModelMapper modelMapper;
 
     /**
-     * Author:
+     * Author: Matheus
      * Method: End Point Request Param
      * Description: Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados;
      * É possivel realizar processos de filtragem na lista de produtos em função dos parametros passados;
@@ -78,8 +78,8 @@ public class ProductController {
     }
 
     /**
-     * Author:
-     * Method:
+     * Author: Maik
+     * Method: Requisicao de compra
      * Description: Responsavel pela operação POST que faz uma requisição de compra na aplicação;
      *
      * @param purchaseRequestDTO Lista de objetos do tipo Product correspondentes a lista de compra;

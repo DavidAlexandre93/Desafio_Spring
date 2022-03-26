@@ -64,7 +64,6 @@ public class ProductService {
      *
      * @return Lista com os produtos cadastrados;
      */
-
     public List<Product> createProducts(ArticlesDTO input) {
   
         List<Product> newProducts = input.getArticles();
@@ -74,7 +73,7 @@ public class ProductService {
 
     /**
      * Author: Maik Henrique e Matheus Guerra
-     * Method:
+     * Method: Procurar produtos por parametros
      * Description: Serviço responsavel por filtras a lista de produtos em função dos parametros informados pelo usuario;
      *
      * @param category atributo de Product usada no processo de filtragem;
@@ -93,8 +92,8 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
+     * Author: Maik
+     * Method: Venda de produtos do carrinho de compras
      * Description: Serviço responsavel pelo processo de venda na aplicação
      *
      * @param shoppingCart representa lista de produtos que estao na requisiçao de compra;
@@ -112,8 +111,8 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
+     * Author: Maik
+     * Method: Procurar produtos e adicionar ao carrinho de compras
      * Description: Serviço responsavel pelo processo de busca de produtos de uma lista de compras, atualização dos valores de
      * estoque para cada tipo de produto presente na lista de compras e validação da compra;
      *
@@ -136,8 +135,8 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
+     * Author: Maik
+     * Method: Atualizar quantidade de produtos na lista
      * Description: Serviço responsavel por atualizar a quantidade de um tipo de produto cadastrado apos uma venda;
      *
      * @param product tipo de produto a ter a sua quantidade atualizada;
@@ -154,8 +153,8 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
+     * Author: Maik
+     * Method: Calcular preco total
      * Description: Serviço que calcula o preço total de uma requisição de venda;
      *
      * @param products lista de produtos presentes no carrinho de compras;
@@ -167,8 +166,8 @@ public class ProductService {
     }
 
     /**
-     * Author:
-     * Method:
+     *
+     * Method: Buscar todos os produtos na lista
      * Description: Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
      *
      * @return lista de produtos cadastrados;

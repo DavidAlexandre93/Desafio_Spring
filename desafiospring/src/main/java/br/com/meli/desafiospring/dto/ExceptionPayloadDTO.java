@@ -14,6 +14,10 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * @Metodo: Excecao para formatos no payload
+ * @Description: Realizar a validacao de formatos no payload com jsonformat
+ */
 public class ExceptionPayloadDTO {
 
     private int statusCode;

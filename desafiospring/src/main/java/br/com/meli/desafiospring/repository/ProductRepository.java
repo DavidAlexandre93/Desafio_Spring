@@ -42,8 +42,8 @@ public class ProductRepository {
     }
 
     /**
-     * Author:
-     * Method:
+     *
+     * Method: Busca por todos os produtos cadastrados
      * Description: permite recuperar uma lista com todos os objetos produto presentes no repositorio;
      *
      * @return lista com todos os objetos presentes produto no repositorio;
@@ -53,8 +53,8 @@ public class ProductRepository {
     }
 
     /**
-     * Author:
-     * Method:
+     *
+     * Method: Incluir novos produtos
      * Description: permite realizar a substituição de um produto por outro;
      *
      * @param oldProduct produto a ser retirado do repositorio;
@@ -68,8 +68,8 @@ public class ProductRepository {
 
 
     /**
-     * Author:
-     * Method:
+     *
+     * Method: Mapendo todos os produtos
      * Description: permite a criação de um Map contendo os produtos cadastrados na aplicação;
      *
      * @return um Map contendo todos os produtos cadastrados na aplicação, usando o atributo ProductId como chave;

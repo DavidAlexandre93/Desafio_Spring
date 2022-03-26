@@ -28,8 +28,6 @@ public class ClientRepository {
      *
      * @param input lista de clientes a serem cadastrados no repositorio;
      */
-
-
     public void writeFile(Client input) {
         try {
             filePersistence.writeToFile(input, filePath);
@@ -39,8 +37,8 @@ public class ClientRepository {
     }
 
     /**
-     * Author:
-     * Method:
+     *
+     * Method: Busca por todos os clientes cadastrados
      * Description: permite recuperar uma lista com todos os objetos cliente presentes no repositorio;
      *
      * @return lista com todos os objetos cliente presentes no repositorio;

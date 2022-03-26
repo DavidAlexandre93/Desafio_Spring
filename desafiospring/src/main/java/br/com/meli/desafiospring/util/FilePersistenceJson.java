@@ -23,6 +23,12 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
 
     private final ObjectMapper objectMapper;
 
+    /**
+     * @Metodo: Escrever no arquivo
+     * @param value
+     * @param jsonFilePath
+     * @throws IOException
+     */
     @Override
     public void writeToFile(T value, String jsonFilePath) throws IOException {
         File jsonFile = Paths.get(jsonFilePath).toFile();
@@ -48,6 +54,12 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
         objectMapper.writeValue(jsonFile, node);
     }
 
+    /**
+     * @Metodo: Ler o arquivo do filepath
+     * @param filePath
+     * @param type
+     * @return
+     */
     @Override
     public List<T> readObjects(String filePath, Class<T> type) {
         try {
@@ -59,6 +71,14 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
         return new LinkedList<>();
     }
 
+    /**
+     * @Metodo: Alterar o filepath com novo item ou atualizacao
+     * @param jsonFilePath
+     * @param oldElement
+     * @param newElement
+     * @param type
+     * @return
+     */
     @Override
     public boolean updateElement(String jsonFilePath, T oldElement, T newElement, Class<T> type) {
         File filePath = Paths.get(jsonFilePath).toFile();
@@ -91,6 +111,12 @@ public class FilePersistenceJson<T> implements FilePersistenceUtil<T> {
         return false;
     }
 
+    /**
+     * @Metodo: Ler ou criar no filepath
+     * @param jsonFile
+     * @return
+     * @throws IOException
+     */
     private JsonNode readArrayOrCreateNew(File jsonFile) throws IOException {
         if (jsonFile.exists() && jsonFile.length() > 0) {
             return objectMapper.readTree(jsonFile);

@@ -13,6 +13,10 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * @Metodo: Validacoes na compra de produtos
+ * @Description: Realizar a leitura do body para validar as requisicoes realizadas em produtos
+ */
 public class ProductPurchaseRequestDTO {
 
     @NotNull(message = "The productId field can not be null")

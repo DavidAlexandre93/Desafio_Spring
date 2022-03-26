@@ -9,6 +9,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * @Metodo: Request Purchase
+ */
 public class PurchaseRequestDTO {
     private List<ProductPurchaseRequestDTO> articlesPurchaseRequest;
 }
