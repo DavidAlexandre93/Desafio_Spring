@@ -108,6 +108,12 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    /**
+     * Author: Mariana Galdino
+     * Method: retorno de lista
+     * Description: leitura da lista de produtos e filtra por categoria
+     * @return
+     */
     public List<Product> getProductsByCategory(String category) {
 
         List<Product> products = productRepository.findAll();
