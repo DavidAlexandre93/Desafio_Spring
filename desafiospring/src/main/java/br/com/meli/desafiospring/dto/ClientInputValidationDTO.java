@@ -6,6 +6,12 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
 
+
+/**
+ * Author: Bruno Mendes
+ * Method: DTO de validação
+ * Description: DTO para validar os inputs recebidos na requisição de post para cadastro de um novo cliente
+ */
 @Data
 public class ClientInputValidationDTO {
 

@@ -31,6 +31,12 @@ public class ClientController {
 
     private final ClientService clientService;
 
+    /**
+     * Author: Bruno Mendes
+     * Method: End point post new client
+     * Description: cria um novo cliente e valida os campos de imput
+     */
+
     @PostMapping("/insert-client")
     public ResponseEntity<?> postClient(@Valid @RequestBody ClientInputValidationDTO input) {
         System.out.println(input);
