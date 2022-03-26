@@ -109,7 +109,7 @@ public class ProductController {
 
     /**
      * Author:
-     * Method:
+     * Method: End Point Get
      * Description: Responsavel pelo operação GET que retorna uma lista com todos os produtos cadastrados.
      *
      * @return Lista com todos os produtos cadastrados
