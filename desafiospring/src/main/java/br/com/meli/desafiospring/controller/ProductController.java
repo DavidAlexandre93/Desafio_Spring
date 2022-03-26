@@ -108,7 +108,7 @@ public class ProductController {
     }
 
     /**
-     * Author:
+     * Author: Micaela Alves
      * Method: End Point Get
      * Description: Responsavel pelo operação GET que retorna uma lista com todos os produtos cadastrados.
      *
