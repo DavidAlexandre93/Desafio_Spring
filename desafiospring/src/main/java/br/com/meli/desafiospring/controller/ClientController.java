@@ -40,7 +40,7 @@ public class ClientController {
      * Description: listar todos os clientes
      * @return
      */
-    @GetMapping("/api/v1/articles/client")
+    @GetMapping("/articles/list-client")
     public ResponseEntity<List<ClienteDTO>> listarClientes() {
         List<ClienteDTO> result = ClienteDTO.converte(clientService.listClient());
         return ResponseEntity.ok(result);

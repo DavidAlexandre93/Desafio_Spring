@@ -2,6 +2,7 @@ package br.com.meli.desafiospring.service;
 
 import br.com.meli.desafiospring.entity.Product;
 import br.com.meli.desafiospring.repository.ProductRepository;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -130,7 +131,7 @@ public class ProductService {
      * @param freeShipping
      * @return
      */
-    public List<Product> listaPorCategoriaFreeshipping(String category, String freeShipping){
+    public List<Product> listaPorCategoriaFreeshipping(String category, Boolean freeShipping){
         List<Product> productList = new ArrayList<>();
         for (Product p: productRepository.findAll()){
             if (p.getCategory().equals(category) && (p.getFreeShipping().equals(freeShipping))){
@@ -166,9 +167,12 @@ public class ProductService {
      * @param quantity
      * @return
      */
-    public List<Product> listaPorPriceQuantity(String price, String quantity){
+    public List<Product> listaPorPriceQuantity(BigDecimal price, Integer quantity){
         List<Product> productList = new ArrayList<>();
         for (Product p: productRepository.findAll()){
+
+            //String convertToString = p.getPrice().toString().valueOf(price);
+
             if(p.getPrice().equals(price) && (p.getQuantity().equals(quantity))){
                 productList.add(p);
             }
@@ -202,9 +206,10 @@ public class ProductService {
      * @param prestige
      * @return
      */
-    public List<Product> listaPorProductIdPrestige(String productId, String prestige){
+    public List<Product> listaPorProductIdPrestige(Long productId, String prestige){
         List<Product> productList = new ArrayList<>();
         for (Product p: productRepository.findAll()){
+
             if(p.getProductId().equals(productId) && (p.getPrestige().equals(prestige))){
                 productList.add(p);
             }
