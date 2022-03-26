@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
  */
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Client {
     private Integer id;
     private String name;

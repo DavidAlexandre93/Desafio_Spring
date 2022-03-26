@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ClientService {
+
 
     ClientRepository clientRepository;
 
@@ -39,6 +41,19 @@ public class ClientService {
                 throw new ClientRegisteredException("Client already registered");
             }
         }
+    }
+
+    public List<Client> getClientsByState(String state){
+
+        List<Client> clientByState = clientRepository.findAll();
+
+        if(state!=null && !state.isEmpty() ) {
+            return clientByState.stream()
+                    .filter(client -> client.getState().equalsIgnoreCase(state))
+                    .collect(Collectors.toList());
+        }
+        return clientByState;
+
     }
 
     /**

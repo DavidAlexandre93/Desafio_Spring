@@ -76,6 +76,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
+
     /**
      * Author: David Alexandre
      * Method: End Point Request Param

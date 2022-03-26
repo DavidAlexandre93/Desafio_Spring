@@ -59,6 +59,7 @@ public class ProductService {
      */
 
     public List<Product> createProducts(ArticlesDTO input) {
+  
         List<Product> newProducts = input.getArticles();
         productRepository.writeFile(newProducts);
         return newProducts;

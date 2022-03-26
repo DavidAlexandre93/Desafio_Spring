@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -30,7 +31,7 @@ public class ClientRepository {
         }
     }
 
-    public List<Client> findAll(){
-        return filePersistence.readObjects(filePath,Client.class);
+    public List<Client> findAll() {
+        return filePersistence.readObjects(filePath, Client.class);
     }
 }
