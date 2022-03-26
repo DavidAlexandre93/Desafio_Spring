@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Author: Bruno Mendes
+ * Method: Entidade do cliente
+ * Description: cria uma entidade para definir as propriedades do cliente
+ */
 
 @Data
 @AllArgsConstructor
