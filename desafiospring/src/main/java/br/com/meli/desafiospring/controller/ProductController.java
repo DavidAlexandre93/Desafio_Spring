@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,8 +80,8 @@ public class ProductController {
      * @param freeShipping
      * @return
      */
-    @GetMapping("/api/v1/articles/")
-    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category, @RequestParam String freeShipping) {
+    @GetMapping("/articles/")
+    public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category, @RequestParam Boolean freeShipping) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category, freeShipping));
         return ResponseEntity.ok(result);
     }
@@ -94,8 +95,8 @@ public class ProductController {
      * @param freeShipping
      * @return
      */
-    @GetMapping("/api/v1/articles/categoryfreeshipping/{category}/{freeShipping}")
-    public ResponseEntity<List<ProductDTO>> categoryFreeshipping(@PathVariable String category, @PathVariable String freeShipping) {
+    @GetMapping("/articles/categoryfreeshipping/{category}/{freeShipping}")
+    public ResponseEntity<List<ProductDTO>> categoryFreeshipping(@PathVariable String category, @PathVariable Boolean freeShipping) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorCategoriaFreeshipping(category, freeShipping));
         return ResponseEntity.ok(result);
     }
@@ -109,7 +110,7 @@ public class ProductController {
      * @param brand
      * @return
      */
-    @GetMapping("/api/v1/articles/namebrand/{name}/{brand}")
+    @GetMapping("/articles/namebrand/{name}/{brand}")
     public ResponseEntity<List<ProductDTO>> nameBrand(@PathVariable String name, @PathVariable String brand) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorNameBrand(name, brand));
         return ResponseEntity.ok(result);
@@ -124,9 +125,9 @@ public class ProductController {
      * @param quantity
      * @return
      */
-    @GetMapping("/api/v1/articles/pricequantity/{price}/{quantity}")
-    public ResponseEntity<List<ProductDTO>> priceQuantity(@PathVariable String price, @PathVariable String quantity) {
-        List<ProductDTO> result = ProductDTO.converte(productService.listaPorPriceQuantity(price, quantity));
+    @GetMapping("/articles/pricequantity/{price}/{quantity}")
+    public ResponseEntity<List<ProductDTO>> priceQuantity(@PathVariable BigDecimal price, @PathVariable Integer quantity) {
+        List<ProductDTO> result = ProductDTO.converte(productService.listaPorPriceQuantity(price,quantity));
         return ResponseEntity.ok(result);
     }
 
@@ -139,7 +140,7 @@ public class ProductController {
      * @param category
      * @return
      */
-    @GetMapping("/api/v1/articles/namecategory/{name}/{category}")
+    @GetMapping("/articles/namecategory/{name}/{category}")
     public ResponseEntity<List<ProductDTO>> nameCategory(@PathVariable String name, @PathVariable String category) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorNameCategory(name, category));
         return ResponseEntity.ok(result);
@@ -154,8 +155,8 @@ public class ProductController {
      * @param prestige
      * @return
      */
-    @GetMapping("/api/v1/articles/productprestige/{productId}/{prestige}")
-    public ResponseEntity<List<ProductDTO>> productIdPrestige(@PathVariable String productId, @PathVariable String prestige) {
+    @GetMapping("/articles/productprestige/{productId}/{prestige}")
+    public ResponseEntity<List<ProductDTO>> productIdPrestige(@PathVariable Long productId, @PathVariable String prestige) {
         List<ProductDTO> result = ProductDTO.converte(productService.listaPorProductIdPrestige(productId, prestige));
         return ResponseEntity.ok(result);
 

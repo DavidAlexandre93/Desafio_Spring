@@ -21,9 +21,9 @@ public class Client {
      * @return
      */
 
-    @Override
+   /* @Override
     public String toString() {
         return String.valueOf(id).concat(";").concat(name).concat(";")
                 .concat(cpf).concat(";").concat(state).concat(";");
-    }
+    }*/
 }

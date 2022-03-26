@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ClienteDTO {
 
-    private Integer clientId;
+    private Integer id;
     private String name;
     private String cpf;
     private String state;
