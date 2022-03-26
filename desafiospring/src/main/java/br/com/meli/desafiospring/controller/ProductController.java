@@ -30,7 +30,20 @@ public class ProductController {
     private final ModelMapper modelMapper;
 
     /**
-     * R005, R006, R007
+     * Author:
+     * Method: End Point Request Param
+     * Description: Responsavel pelo operação GET que retorna uma lista com os produtos cadastrados;
+     * É possivel realizar processos de filtragem na lista de produtos em função dos parametros passados;
+     *
+     * @param category       Atributo da Class Product usada no processo de filtragem;
+     * @param freeShipping   Atributo da Class Product usada no processo de filtragem;
+     * @param order          Opção escolhida para filtragem em relação a ordem alfabetica ou por preço:
+     *                       order = 0: Orderm alfabética crescente;
+     *                       order = 1: Orderm alfabética decrescente;
+     *                       order = 2: Ordem do maior preço para o menor;
+     *                       order = 3: Ordem do menor preço para o maior;
+     *
+     * @return  Lista de objetos do tipo Product de produtos cadastrados filtrados ou não;
      */
 
     @GetMapping("/articles")
@@ -44,11 +57,18 @@ public class ProductController {
         }
     }
 
+
+
     /**
      * Author: Bruno Mendes
      * Method: End point post new Product
-     * Description: Cria novos produtos recebendo uma lista de produtos
+     * Description: Responsavel pela operação POST que cadastra novos produtos na aplicação ao receber uma lista de produtos;
+     *
+     * @param input Entrada com lista de objetos seguindo os atribuitos da Class Product no formato JSON;
+     *
+     * @return Mensagem de confirmação ou não de cadastro e informações no formato DTO dos produtos cadastrados;
      */
+
     @PostMapping("/insert-articles-request")
     public ResponseEntity<?> postProducts(@Valid @RequestBody ArticlesDTO input) {
         List<Product> products = productService.createProducts(input);
@@ -57,12 +77,23 @@ public class ProductController {
         return ResponseEntity.ok(resultDTO);
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Responsavel pela operação POST que faz uma requisição de compra na aplicação;
+     *
+     * @param purchaseRequestDTO Lista de objetos do tipo Product correspondentes a lista de compra;
+     *
+     * @return Mensagem de confirmação ou não da requisição de compra e informações sobre os produtos informados
+     *          na requisição de compra mais valor total da compra;
+     */
     @PostMapping("/purchase-request")
     public ResponseEntity<?> purchaseProducts(@Valid @RequestBody PurchaseRequestDTO purchaseRequestDTO) {
         ShoppingCart shoppingCart = modelMapper.map(purchaseRequestDTO, ShoppingCart.class);
         ShoppingCart result = productService.sellProducts(shoppingCart);
         return ResponseEntity.ok(result);
     }
+
     /**
      * Author: Mariana Galdino
      * Method: End Point
@@ -76,6 +107,13 @@ public class ProductController {
         return ResponseEntity.ok(categories);
     }
 
+    /**
+     * Author: Micaela Alves
+     * Method: End Point Get
+     * Description: Responsavel pelo operação GET que retorna uma lista com todos os produtos cadastrados.
+     *
+     * @return Lista com todos os produtos cadastrados
+     */
     @GetMapping("/articles/all")
     public ResponseEntity<?> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
@@ -87,9 +125,10 @@ public class ProductController {
      * Method: End Point Request Param
      * Description: Buscar os category com seus respectivos freeshipping, sendo true ou false
      *
-     * @param category
-     * @param freeShipping
-     * @return
+     * @param category Atributo da Class Product usada no processo de filtragem;
+     * @param freeShipping Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por categoria;
      */
     @GetMapping("/articles/listcategoryfreeshipping")
     public ResponseEntity<List<ProductDTO>> categoryFreeshippingRequest(@RequestParam String category,
@@ -103,9 +142,10 @@ public class ProductController {
      * Method: End Point Path Variable
      * Description: Buscar o produto com sua category com seus respectivos freeshipping, sendo true ou false
      *
-     * @param category
-     * @param freeShipping
-     * @return
+     * @param category Atributo da Class Product usada no processo de filtragem;
+     * @param freeShipping Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por categoria e possibilidade de envio gratis;
      */
     @GetMapping("/articles/categoryfreeshipping/{category}/{freeShipping}")
     public ResponseEntity<List<ProductDTO>> categoryFreeshipping(@PathVariable String category, @PathVariable Boolean freeShipping) {
@@ -118,9 +158,10 @@ public class ProductController {
      * Method: End Point Path Variable
      * Description: Buscar o produto com seu name e respectivo brand
      *
-     * @param name
-     * @param brand
-     * @return
+     * @param name Atributo da Class Product usada no processo de filtragem;
+     * @param brand Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por nome e marca;
      */
     @GetMapping("/articles/namebrand/{name}/{brand}")
     public ResponseEntity<List<ProductDTO>> nameBrand(@PathVariable String name, @PathVariable String brand) {
@@ -133,9 +174,10 @@ public class ProductController {
      * Method: End Point Path Variable
      * Description: Buscar o produto com seu price e quantity
      *
-     * @param price
-     * @param quantity
-     * @return
+     * @param price Atributo da Class Product usada no processo de filtragem;
+     * @param quantity Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por preco e quantidade disponivel;
      */
     @GetMapping("/articles/pricequantity/{price}/{quantity}")
     public ResponseEntity<List<ProductDTO>> priceQuantity(@PathVariable BigDecimal price, @PathVariable Integer quantity) {
@@ -148,9 +190,10 @@ public class ProductController {
      * Method: End Point Path Variable
      * Description: Buscar o produto com seu name e sua respectiva category
      *
-     * @param name
-     * @param category
-     * @return
+     * @param name Atributo da Class Product usada no processo de filtragem;
+     * @param category Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por nome e categoria;
      */
     @GetMapping("/articles/namecategory/{name}/{category}")
     public ResponseEntity<List<ProductDTO>> nameCategory(@PathVariable String name, @PathVariable String category) {
@@ -163,9 +206,10 @@ public class ProductController {
      * Method: End Point Path Variable
      * Description: Buscar o produto com seu ID e respectivo prestige
      *
-     * @param productId
-     * @param prestige
-     * @return
+     * @param productId Atributo da Class Product usada no processo de filtragem;
+     * @param prestige Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por Id do produto e prestigio;
      */
     @GetMapping("/articles/productprestige/{productId}/{prestige}")
     public ResponseEntity<List<ProductDTO>> productIdPrestige(@PathVariable Long productId, @PathVariable String prestige) {

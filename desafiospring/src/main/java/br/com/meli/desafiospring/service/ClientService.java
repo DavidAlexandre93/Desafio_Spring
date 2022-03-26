@@ -21,7 +21,9 @@ public class ClientService {
     /**
      * Author: Bruno Mendes
      * Method: Metodo para criar novos clientes
-     * Description: Recebe novo cliente com campos validados, verifica se ja existe e se não existr envia para repository
+     * Description: Recebe novo cliente com campos validados, verifica se ja existe e se não existr envia para repository;
+     *
+     * @param input Objeto correspondente ao cliente a ser cadastrado;
      */
 
     public void createClient(Client input) {
@@ -42,6 +44,7 @@ public class ClientService {
             }
         }
     }
+
     /**
      * Author: Mariana Galdino
      * Method: retorna lista de clientes filtrados
@@ -65,7 +68,8 @@ public class ClientService {
      * Author: David Alexandre
      * Method: Retornar a lista de cliente
      * Description: Realizar a leitura da lista e retornar todos os clientes
-     * @return
+     *
+     * @return lista com os clientes cadastrados;
      */
     public List<Client> listClient(){
         List<Client> clienteList = new ArrayList<>();

@@ -34,7 +34,10 @@ public class ProductService {
     private final List<ShoppingCartValidator> shoppingCartValidators;
 
     /**
-     * R005, R006, R007
+     * Author: Maik Henrique e Matheus Guerra
+     * Method:
+     * Description: Comparador utilizado no processo de filtragem da lista de produtos existentes correspondentes aos requisitos:
+     * R005, R006, R007;
      */
     private static Function<Integer, Comparator<Product>> p = orderBy -> (Comparator<Product>) (o1, o2) -> {
         int result = 0;
@@ -56,6 +59,10 @@ public class ProductService {
      * Author: Bruno Mendes
      * Method: Metodo para criar novos produtos
      * Description: Recebe lista de produtos com campos validados, e envia para repository
+     *
+     * @param input Entrada com lista de objetos seguindo os atribuitos da Class Product no formato JSON;
+     *
+     * @return Lista com os produtos cadastrados;
      */
 
     public List<Product> createProducts(ArticlesDTO input) {
@@ -65,11 +72,35 @@ public class ProductService {
         return newProducts;
     }
 
+    /**
+     * Author: Maik Henrique e Matheus Guerra
+     * Method:
+     * Description: Serviço responsavel por filtras a lista de produtos em função dos parametros informados pelo usuario;
+     *
+     * @param category atributo de Product usada no processo de filtragem;
+     * @param freeShipping atributo de Product usada no processo de filtragem;
+     * @param orderBy opção escolhida para filtragem em relação a ordem alfabetica ou por preço:
+     *                             orderBy = 0: Orderm alfabética crescente;
+     *                             orderBy = 1: Orderm alfabética decrescente;
+     *                             orderBy = 2: Ordem do maior preço para o menor;
+     *                             orderBy = 3: Ordem do menor preço para o maior;
+     *
+     * @return Lista de produtos apos o processo de filtragem;
+     */
     public List<Product> findByCriteria(String category, Boolean freeShipping, Integer orderBy) {
         return productRepository.findAll()
                 .stream().sorted(ProductService.p.apply(orderBy)).collect(Collectors.toList());
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço responsavel pelo processo de venda na aplicação
+     *
+     * @param shoppingCart representa lista de produtos que estao na requisiçao de compra;
+     *
+     * @return informações sobre os produtos informados na requisição de compra mais valor total da compra;
+     */
     public ShoppingCart sellProducts(ShoppingCart shoppingCart) {
         ShoppingCart result = new ShoppingCart();
         List<Product> boughtProducts = findTargetProducts(shoppingCart);
@@ -80,6 +111,16 @@ public class ProductService {
         return result;
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço responsavel pelo processo de busca de produtos de uma lista de compras, atualização dos valores de
+     * estoque para cada tipo de produto presente na lista de compras e validação da compra;
+     *
+     * @param shoppingCart lista de compras apos os processos de validação;
+     *
+     * @return lista com as informações dos produtos presentes na requesição de compra
+     */
     private List<Product> findTargetProducts(ShoppingCart shoppingCart) {
         Map<Long, Product> productsMap = productRepository.getProductsMap();
 
@@ -94,6 +135,14 @@ public class ProductService {
                 }).collect(Collectors.toList());
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por atualizar a quantidade de um tipo de produto cadastrado apos uma venda;
+     *
+     * @param product tipo de produto a ter a sua quantidade atualizada;
+     * @param newProductQuantity nova quantidade de produtos disponivel no sistema;
+     */
     public void updateProductQuantity(Product product, int newProductQuantity) {
         try {
             Product newProduct = (Product) product.clone();
@@ -104,11 +153,26 @@ public class ProductService {
         }
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço que calcula o preço total de uma requisição de venda;
+     *
+     * @param products lista de produtos presentes no carrinho de compras;
+     * @return valor total da compra requisitada;
+     */
     private BigDecimal calculateTotalPrice(List<Product> products) {
         return products.stream().map(p -> p.getPrice().multiply(BigDecimal.valueOf(p.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
+     *
+     * @return lista de produtos cadastrados;
+     */
     public List<Product> findAll() {
         return productRepository.findAll();
     }
@@ -131,6 +195,13 @@ public class ProductService {
         return products;
     }
 
+    /**
+     * Author:
+     * Method:
+     * Description: Serviço responsavel por retornar uma lista com todos os produtos presentes na aplicação;
+     *
+     * @return lista de produtos cadastrados;
+     */
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -138,10 +209,12 @@ public class ProductService {
     /**
      * Author: David Alexandre
      * Method: Retornar somente o dado buscado na lista de produtos
-     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-     * @param category
-     * @param freeShipping
-     * @return
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos;
+     *
+     * @param category Atributo da Class Product usada no processo de filtragem;
+     * @param freeShipping Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por categoria e condicao de envio;
      */
     public List<Product> listaPorCategoriaFreeshipping(String category, Boolean freeShipping){
         List<Product> productList = new ArrayList<>();
@@ -156,10 +229,12 @@ public class ProductService {
     /**
      * Author: David Alexandre
      * Method: Retornar somente o dado buscado na lista de produtos
-     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-     * @param name
-     * @param brand
-     * @return
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos;
+     *
+     * @param name Atributo da Class Product usada no processo de filtragem;
+     * @param brand Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por nome e marca;
      */
     public List<Product> listaPorNameBrand(String name, String brand){
         List<Product> productList = new ArrayList<>();
@@ -174,10 +249,12 @@ public class ProductService {
     /**
      * Author: David Alexandre
      * Method: Retornar somente o dado buscado na lista de produtos
-     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-     * @param price
-     * @param quantity
-     * @return
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos;
+     *
+     * @param price Atributo da Class Product usada no processo de filtragem;
+     * @param quantity Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por preco e quantidade disponivel;
      */
     public List<Product> listaPorPriceQuantity(BigDecimal price, Integer quantity){
         List<Product> productList = new ArrayList<>();
@@ -195,10 +272,12 @@ public class ProductService {
     /**
      * Author: David Alexandre
      * Method: Retornar somente o dado buscado na lista de produtos
-     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-     * @param name
-     * @param category
-     * @return
+     * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos;
+     *
+     * @param name Atributo da Class Product usada no processo de filtragem;
+     * @param category Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados por nome e categoria;
      */
     public List<Product> listaPorNameCategory(String name, String category){
         List<Product> productList = new ArrayList<>();
@@ -214,9 +293,11 @@ public class ProductService {
      * Author: David Alexandre
      * Method: Retornar somente o dado buscado na lista de produtos
      * Description: Realizar a leitura da lista e pegar somente os dados passados em produtos
-     * @param productId
-     * @param prestige
-     * @return
+     *
+     * @param productId Atributo da Class Product usada no processo de filtragem;
+     * @param prestige Atributo da Class Product usada no processo de filtragem;
+     *
+     * @return Lista de objetos do tipo Product de produtos cadastrados filtrados pelo Id do produto e prestigio;
      */
     public List<Product> listaPorProductIdPrestige(Long productId, String prestige){
         List<Product> productList = new ArrayList<>();
